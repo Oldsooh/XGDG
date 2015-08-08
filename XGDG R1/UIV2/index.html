@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <title>键客邦自适应图片演示站</title>
+  <meta name="keywords" content="键客邦 自适应 图片">
+  <meta name="description" content="键客邦自适应图片演示站可在多种设备上浏览，可做素材下载站，图片站，或者视频站等。">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="style/mystyle.css">
+</head>
+<body>
+
+
+<header>
+  <nav class="navbar navbar-inverse nav-j">
+    <div class="container nav-c">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="index.html"><img height="43" width="130" style="margin-top: 3px"
+ alt="xgdg.cn" src="images/logo.png"></a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="line"></li>
+                    <li class="hover"><a href='index.html'>首页</a></li>
+                    <li class="line"></li>
+                    <li><a href="list.html">清纯校花</a></li>
+                    <li class='line'></li>
+                    <li><a href="list.html">性感尤物</a></li>
+                    <li class='line'></li>
+                    <li><a href="list.html">时尚明星</a></li>
+                    <li class='line'></li>
+                    <li><a href="list.html">古韵若烟</a></li>
+                    <li class='line'></li>
+                    <li><a href="list.html">潮流型男</a></li>
+                    <li class='line'></li>
+                    <li><a href="news.html">性感资讯</a></li>
+                    <li class='line'></li>
+                            </ul>
+        <form action="#" method="get" class="navbar-form navbar-right" role="search">
+            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="a" value="init">
+            <input type="hidden" name="c" value="index">
+            
+            <input type="hidden" name="typeid" value="1" id="typeid">
+            <input type="hidden" name="siteid" value="1" id="siteid">
+            <div class="input-group">
+              <input type="text" id="q" name="q" class="form-control" placeholder="搜索内容...">
+              <span class="input-group-btn">
+                <button class="btn btn-success" type="submit" id="search_btn">Go!</button>
+              </span>
+            </div>
+        </form>
+      </div>
+
+    </div>
+  </nav>
+</header>
+<div class="container slider-c">
+  <!-- 提示信息 -->
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <strong>键客邦温馨提示：</strong>喜欢此模板请联系客服QQ：2662492869 自适应缩小浏览器试试！
+  </div>
+
+  <!-- 焦点图 -->
+  <div class="row tops">
+    <div class="col-md-9">
+      <div class="focus">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- 小点导航 -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+          <!-- 正文图片 -->
+          <div class="carousel-inner" role="listbox">
+              <div class="item">
+                <img src="images/2de797545de56274f03a5920eb3a1.jpg" alt="...">
+                <div class="carousel-caption">
+                  文字介绍1
+                </div>
+              </div>
+              <div class="item active">
+                <img src="images/2de797545de56274f03a5920eb3a1.jpg" alt="...">
+                <div class="carousel-caption">
+                  文字介绍2
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/2de797545de56274f03a5920eb3a1.jpg" alt="...">
+                <div class="carousel-caption">
+                  文字介绍3
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/2de797545de56274f03a5920eb3a1.jpg" alt="...">
+                <div class="carousel-caption">
+                  文字介绍4
+                </div>
+              </div>
+            </div>
+          <!-- 左右控制 -->
+          <a class="left carousel-control" href="#/#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">上一页</span>
+          </a>
+          <a class="right carousel-control" href="#/#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">下一页</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧 -->
+    <div class="col-md-3 hidden-xs hidden-sm">
+      <div class="row">
+        <div class="col-md-12 col-xs-6">
+                              <div class="media toppost">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/20150407105723647.jpg" alt="猫妖MM性感外拍">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading">
+                <a href="#" title="猫妖MM性感外拍">猫妖MM性感外拍</a>
+              </h2>
+              <p>时间：2015-04-07</p>
+              <p>分类：<a href="#">
+              性感美女</a></p>
+            </div>
+          </div>
+          <hr>
+                    <div class="media toppost">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/20150407104856232.jpg" alt="游戏COSPLAY性感凌">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading">
+                <a href="#" title="游戏COSPLAY性感凌">游戏COSPLAY性感凌</a>
+              </h2>
+              <p>时间：2015-04-07</p>
+              <p>分类：<a href="#">
+              性感美女</a></p>
+            </div>
+          </div>
+          <hr>
+                    <div class="media toppost">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/20150407104607246.jpg" alt="聚光灯下的模特">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading">
+                <a href="#" title="聚光灯下的模特">聚光灯下的模特</a>
+              </h2>
+              <p>时间：2015-04-07</p>
+              <p>分类：<a href="#">
+              性感美女</a></p>
+            </div>
+          </div>
+          <hr>
+                    <div class="media toppost">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/20150407094029230.jpg" alt="90后性感觉美少女">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading">
+                <a href="#" title="90后性感觉美少女">90后性感觉美少女</a>
+              </h2>
+              <p>时间：2015-04-07</p>
+              <p>分类：<a href="#">
+              性感美女</a></p>
+            </div>
+          </div>
+          <hr>
+                            </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 分类 -->
+        <div class="row">
+    <div class="col-md-12">
+      <div class="fl-tit clearfix">
+        <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 性感美女</h2>
+        <span class="fr">
+          <a href="#">更多...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407111150257.jpg" alt="性感牛仔白嫩妹子浴室写真">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="性感牛仔白嫩妹子浴室写真">性感牛仔白嫩妹子...</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:11</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407105723647.jpg" alt="猫妖MM性感外拍">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="猫妖MM性感外拍">猫妖MM性感外拍</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 10:57</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407104856232.jpg" alt="游戏COSPLAY性感凌">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="游戏COSPLAY性感凌">游戏COSPLAY性感凌</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 10:48</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407104607246.jpg" alt="聚光灯下的模特">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="聚光灯下的模特">聚光灯下的模特</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 10:45</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407102154958.jpg" alt="性感美模嘉依">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="性感美模嘉依">性感美模嘉依</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 10:21</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407094029230.jpg" alt="90后性感觉美少女">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="90后性感觉美少女">90后性感觉美少女</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 09:40</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+          </div>
+          <div class="row">
+    <div class="col-md-12">
+      <div class="fl-tit clearfix">
+        <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 清纯美女</h2>
+        <span class="fr">
+          <a href="#">更多...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/20150407032349922.jpg" alt="气质美女街拍">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="气质美女街拍">气质美女街拍</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:34</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407113301404.jpg" alt="台大校花miki清纯写真">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="台大校花miki清纯写真">台大校花miki清纯写真</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:32</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="h#">
+        <img src="images/thumb_320_420_20150407113030996.jpg" alt="张雅筑清新迷人写真">
+      </a>
+      <div class="caption">
+        <h2><a href="h#" title="张雅筑清新迷人写真">张雅筑清新迷人写真</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:30</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407112847818.jpg" alt="滑梯上的清纯小学妹">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="滑梯上的清纯小学妹">滑梯上的清纯小学妹</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:28</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407112710783.jpg" alt="邻家小学妹青纯照">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="邻家小学妹青纯照">邻家小学妹青纯照</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:26</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407112551863.jpg" alt="大眼美女花裙街拍">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="大眼美女花裙街拍">大眼美女花裙街拍</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 11:25</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+          </div>
+          <div class="row">
+    <div class="col-md-12">
+      <div class="fl-tit clearfix">
+        <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 美女明星</h2>
+        <span class="fr">
+          <a href="#">更多...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407022255736.jpg" alt="杨幂">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="杨幂">杨幂</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:22</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407021707947.jpg" alt="柳岩">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="柳岩">柳岩</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:16</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407021014819.jpg" alt="林允儿">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="林允儿">林允儿</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:09</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407020752331.jpg" alt="阿曼达·塞弗里德">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="阿曼达·塞弗里德">阿曼达·塞弗里德</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:07</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407020447305.jpg" alt="米兰达可儿">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="米兰达可儿">米兰达可儿</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:04</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407015640502.jpg" alt="艾薇儿">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="艾薇儿">艾薇儿</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 13:55</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+          </div>
+          <div class="row">
+    <div class="col-md-12">
+      <div class="fl-tit clearfix">
+        <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 萌宠</h2>
+        <span class="fr">
+          <a href="#">更多...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#">
+        <img src="images/thumb_320_420_20150407024509981.jpg" alt="肥猫的世界你不懂">
+      </a>
+      <div class="caption">
+        <h2><a href="#" title="肥猫的世界你不懂">肥猫的世界你不懂</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:44</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#9&id=23">
+        <img src="images/thumb_320_420_20150407024145875.jpg" alt="我是一只喵星人">
+      </a>
+      <div class="caption">
+        <h2><a href="#9&id=23" title="我是一只喵星人">我是一只喵星人</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:41</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#9&id=22">
+        <img src="images/thumb_320_420_20150407023916327.jpg" alt="金毛君">
+      </a>
+      <div class="caption">
+        <h2><a href="#9&id=22" title="金毛君">金毛君</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:38</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#9&id=21">
+        <img src="images/thumb_320_420_20150407023423701.jpg" alt="感觉自己萌萌哒">
+      </a>
+      <div class="caption">
+        <h2><a href="#9&id=21" title="感觉自己萌萌哒">感觉自己萌萌哒</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:34</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#9&id=20">
+        <img src="images/thumb_320_420_20150407023107138.jpg" alt="二货哈士奇">
+      </a>
+      <div class="caption">
+        <h2><a href="#9&id=20" title="二货哈士奇">二货哈士奇</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:30</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#9&id=19">
+        <img src="images/thumb_320_420_20150407022534585.jpg" alt="大脸猫">
+      </a>
+      <div class="caption">
+        <h2><a href="#9&id=19" title="大脸猫">大脸猫</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 14:25</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+          </div>
+          <div class="row">
+    <div class="col-md-12">
+      <div class="fl-tit clearfix">
+        <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 美食</h2>
+        <span class="fr">
+          <a href="#">更多...</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=30">
+        <img src="images/thumb_320_420_20150407031412803.jpg" alt="辣辣的豆腐">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=30" title="辣辣的豆腐">辣辣的豆腐</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:13</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=29">
+        <img src="images/thumb_320_420_20150407031004492.jpg" alt="超可爱的小猪蛋糕">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=29" title="超可爱的小猪蛋糕">超可爱的小猪蛋糕</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:09</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=28">
+        <img src="images/thumb_320_420_20150407030917645.jpg" alt="千层面？？">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=28" title="千层面？？">千层面？？</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:08</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=27">
+        <img src="images/thumb_320_420_20150407030750255.jpg" alt="不知道名字不过看起来很好吃的样子">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=27" title="不知道名字不过看起来很好吃的样子">不知道名字不过看...</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:07</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=26">
+        <img src="images/thumb_320_420_20150407030615588.jpg" alt="五仁蛋糕">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=26" title="五仁蛋糕">五仁蛋糕</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:05</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+        <div class="col-xs-6 col-md-4 col-lg-2">
+      <div class="thumbnail">
+      <a href="#10&id=25">
+        <img src="images/thumb_320_420_20150407030422224.jpg" alt="巧克力牛角面包">
+      </a>
+      <div class="caption">
+        <h2><a href="#10&id=25" title="巧克力牛角面包">巧克力牛角面包</a></h2>
+        <p>
+          <span><i class="fa fa-clock-o"></i> 2015-04-07 15:03</span>
+          <!-- <span><i class="fa fa-eye"></i> 200</span> -->
+        </p>
+      </div>
+      </div>
+    </div>
+          </div>
+    </div>
+
+<footer class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Copyright © 2015 - www.alicss.com 网站定制开发QQ：2662492869</p>
+          <p>
+                                    <a href="aboutus.html">关于我们</a>
+                        <a href="aboutus.html">联系方式</a>
+                        <a href="aboutus.html">版权声明</a>
+                        <a href="aboutus.html">招聘信息</a>
+                                  </p>
+          <!-- <p><a href="javascript:goTop();" class="pull-right">回到顶部</a></p> -->
+        </div>
+      </div>
+    </div>
+</footer>
+<div id="gotop" class="row"></div>
+
+<!--返回顶部-->
+<script>
+  // 回滚动
+  $(function () {
+    $("#gotop").click(function (e) {
+        $('body,html').animate({ scrollTop: 0 }, 300);
+    });
+    $("#gotop").mouseover(function (e) {
+        $(this).css("background", "url(images/gettop.png) no-repeat 0px -70px");
+    });
+    $("#gotop").mouseout(function (e) {
+        $(this).css("background", "url(images/gettop.png) no-repeat 0px -201px");
+    });
+    goTop();
+});
+function goTop() {
+    $(window).scroll(function (e) {
+        if ($(window).scrollTop() > 100)
+            $("#gotop").fadeIn(500);
+        else
+            $("#gotop").fadeOut(500);
+    });
+};
+</script>
+
+<script>
+  $(function(){
+    // 内容页图片居中并自适应
+    $(".contes img").addClass("img-responsive center-block img-thumbnail");
+    //翻页页码样式
+    $(".pages a").addClass("btn btn-default");
+    $(".pages span").addClass("btn btn-danger");
+  })
+</script>
+
+
+</body></html>

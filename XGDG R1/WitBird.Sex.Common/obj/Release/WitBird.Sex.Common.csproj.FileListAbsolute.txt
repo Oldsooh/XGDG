@@ -1,0 +1,4 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.pdb

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)#2 -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <title>关于我们 - 键客邦自适应图片演示站</title>
+  <meta name="keywords" content="关于我们">
+  <meta name="description" content="关于我们">
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="style/mystyle.css">
+  <link rel="stylesheet" href="style/font-awesome.min.css">
+  <script src="script/jquery.min.js"></script>
+  <script src="script/bootstrap.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+
+<header>
+  <nav class="navbar navbar-inverse nav-j">
+    <div class="container nav-c">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+        <a href="index.html" class="navbar-brand">键客邦自适应演示站</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">首页</a></li>
+                              <li><a href="#6">性感美女</a></li>
+                    <li><a href="#7">清纯美女</a></li>
+                    <li><a href="#8">美女明星</a></li>
+                    <li><a href="#9">萌宠</a></li>
+                    <li><a href="#10">美食</a></li>
+                            </ul>
+        <form action="index.html" method="get" class="navbar-form navbar-right" role="search">
+            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="a" value="init">
+            <input type="hidden" name="c" value="index">
+            
+            <input type="hidden" name="typeid" value="1" id="typeid">
+            <input type="hidden" name="siteid" value="1" id="siteid">
+            <div class="input-group">
+              <input type="text" id="q" name="q" class="form-control" placeholder="搜索内容...">
+              <span class="input-group-btn">
+                <button class="btn btn-success" type="submit" id="search_btn">Go!</button>
+              </span>
+            </div>
+        </form>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4><i class="fa fa-cog"></i>&nbsp; 网站介绍</h4></div>
+                <div class="list-group">
+                                    <a href="aboutus.html" class="list-group-item active">关于我们</a>
+                                    <a href="aboutus.html" class="list-group-item">联系方式</a>
+                                    <a href="aboutus.html" class="list-group-item">版权声明</a>
+                                    <a href="aboutus.html" class="list-group-item">招聘信息</a>
+                                  </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-list-alt"></i>&nbsp;                    关于我们</h4>
+                </div>
+                <div class="panel-body">
+                                            键客邦演示站<br>
+<br>
+此模板是自适应类型的，可用于图片站，素材站，小说笑话站，动漫站，视频站等。<br>
+<br>
+如果您需要此网站请联系QQ客服购买：2662492869<br>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Copyright © 2015 - www.alicss.com 网站定制开发QQ：2662492869</p>
+          <p>
+                                    <a href="aboutus.html">关于我们</a>
+                        <a href="aboutus.html">联系方式</a>
+                        <a href="aboutus.html">版权声明</a>
+                        <a href="aboutus.html">招聘信息</a>
+                                  </p>
+          <p><a href="javascript:goTop();" class="pull-right">回到顶部</a></p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<!--返回顶部-->
+<script>
+  // 回滚动
+  function goTop(){
+    $('html,body').animate({'scrollTop':0},300);
+  }
+</script>
+
+<script>
+  $(function(){
+    // 内容页图片居中并自适应
+    $(".contes img").addClass("img-responsive center-block img-thumbnail");
+    //翻页页码样式
+    $(".pages a").addClass("btn btn-default");
+    $(".pages span").addClass("btn btn-danger");
+  })
+</script>
+
+
+</body></html>

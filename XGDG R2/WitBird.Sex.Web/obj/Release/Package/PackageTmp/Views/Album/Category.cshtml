@@ -1,0 +1,96 @@
+﻿@model WitBird.Sex.Web.Models.CategoryModel
+@{
+    ViewBag.Title = Model.Category.Title + "，" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.Category.Keywords;
+    ViewBag.Description = Model.Category.Description;
+    ViewBag.MainTitle = Model.Category.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    @*<style>
+        #@Model.Category.Id a, #@Model.Category.Id a:hover { background: url(/content/images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+    </style>*@
+}
+
+<!-- 面包屑 -->
+<ol class="breadcrumb hidden-xs">
+    <li><a href="/">首页</a></li>
+    <li class="active"><a href="@Model.Category.Id">@Model.Category.Name</a> </li>
+</ol>
+
+<!-- 缩略图 -->
+<div class="row">
+    @if (Model.Albums != null && Model.Albums.Count > 0)
+    {
+        foreach (var item in Model.Albums)
+        {
+            string url = "/show/" + item.Id + ".html";
+        <div class="col-xs-6 col-md-4 col-lg-2">
+            <div class="thumbnail">
+                <a href="@url">
+                    <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                </a>
+                <div class="caption">
+                    <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                    <p>
+                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
+<!-- 分页 -->
+<div class="pages">
+    @if (Model.PageCount > 1)
+    {
+        for (int step = 1; step <= Model.PageCount; step = step + Model.PageStep)
+        {
+            if (Model.PageIndex >= step && Model.PageIndex < step + Model.PageStep)
+            {
+                //首页
+                if (Model.PageStep < Model.PageIndex)
+                {
+        <a class="a1 btn btn-default" href="/@Model.Category.Id/1">首页</a>
+        <span class="btn btn-danger">...</span>
+                }
+                //上一页
+                if (Model.PageIndex > 1)
+                {
+        <a class="a1 btn btn-default" href="/@Model.Category.Id/@(Model.PageIndex - 1)">上一页</a>
+                }
+                //分页
+                for (int i = step; i < step + Model.PageStep; i++)
+                {
+                    if (i <= Model.PageCount)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+        <span class="btn btn-danger">@i</span>
+                        }
+                        else
+                        {
+        <a href="/@Model.Category.Id/@i" class="btn btn-default">@i</a>
+                        }
+                    }
+                }
+                //下一页
+                if (Model.PageIndex < Model.PageCount)
+                {
+        <a class="a1 btn btn-default" href="/@Model.Category.Id/@(Model.PageIndex + 1)">下一页</a>
+                }
+                //末页
+                if (step + Model.PageStep <= Model.PageCount)
+                {
+        <span class="btn btn-danger">...</span>
+        <a class="a1 btn btn-default" href="/@Model.Category.Id/@Model.PageCount">末页</a>
+                }
+            }
+        }
+    }
+
+</div>
+<div class="jj"></div>

@@ -1,0 +1,33 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\bin\Debug\WitBird.Sex.Model.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.BLL\obj\Debug\WitBird.Sex.BLL.pdb

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <link href="/content/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <link rel="stylesheet" href="/content/style/style.css">
+    <script src="/content/script/global.js"></script>
+    @RenderSection("head", false)
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-inverse nav-j">
+            <div class="container nav-c">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="logo" href="/">
+                        <img height="43" width="130" alt="xgdg.cn" src="/content/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="line"></li>
+                        <li id="home"><a href='/'>首页</a></li>
+                        @if (WitBird.Sex.WebV2.Cache.Categories != null)
+                        {
+                            foreach (var item in WitBird.Sex.WebV2.Cache.Categories)
+                            {
+                            <li class="line"></li>
+                            <li id="@item.Id"><a href='/@item.Id'>@item.Name</a></li>
+                            }
+                        }
+                        <li class='line'></li>
+                    </ul>
+                    <div class="navbar-form navbar-right">
+                        <div class="input-group">
+                            <input id="search" type="text" name="keywords" class="form-control" placeholder="搜索你喜欢的" autocomplete="off"  maxlength="15" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit" id="searchbtn">Go</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container slider-c">
+    @RenderBody()
+    </div>
+
+    <footer class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Copyright &copy; 2013-2015 [@WitBird.Sex.WebV2.Cache.WebConfig.WebName] &nbsp;&nbsp;
+                        @WitBird.Sex.WebV2.Cache.WebConfig.ICP &nbsp;&nbsp;</p>
+                    <p>
+                        <a href="/aboutus">关于我们</a>
+                        <a href="/mzsm">免责声明</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--返回顶部-->
+    <div id="gotop" class="row" title="返回顶部"></div>
+
+    @RenderSection("foot", false)
+</body>
+</html>

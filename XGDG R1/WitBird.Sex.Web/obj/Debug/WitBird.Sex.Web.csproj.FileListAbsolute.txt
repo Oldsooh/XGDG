@@ -1,0 +1,88 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Web.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Web.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\LitJSON.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\Microsoft.Web.Infrastructure.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\Newtonsoft.Json.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Net.Http.Formatting.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Helpers.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Http.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Http.WebHost.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Mvc.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Razor.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.Deployment.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.Razor.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.BLL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\Newtonsoft.Json.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Net.Http.Formatting.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Helpers.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Http.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Http.WebHost.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Mvc.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.Razor.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.Deployment.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\System.Web.WebPages.Razor.xml
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.Http.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.Mvc.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.Razor.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Model.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.Model.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.DAL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Web\bin\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Web.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Web.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\LitJSON.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\Microsoft.Web.Infrastructure.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\Newtonsoft.Json.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Net.Http.Formatting.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Helpers.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Http.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Http.WebHost.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Mvc.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Razor.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.Deployment.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.Razor.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.BLL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Model.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.DAL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.Model.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\Newtonsoft.Json.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Net.Http.Formatting.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Helpers.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Http.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Http.WebHost.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Mvc.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.Razor.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.Deployment.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\System.Web.WebPages.Razor.xml
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.Http.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.Mvc.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.Razor.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Web\obj\Debug\WitBird.Sex.Web.pdb

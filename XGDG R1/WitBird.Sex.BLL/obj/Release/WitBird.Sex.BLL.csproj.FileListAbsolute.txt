@@ -1,0 +1,11 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.BLL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Release\WitBird.Sex.BLL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Release\WitBird.Sex.BLL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\obj\Release\WitBird.Sex.BLL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.DAL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.Model.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.BLL\bin\Release\WitBird.Sex.Model.pdb

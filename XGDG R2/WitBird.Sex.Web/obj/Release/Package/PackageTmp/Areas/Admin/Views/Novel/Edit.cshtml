@@ -1,0 +1,124 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.NovelModel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <script src="/Areas/Admin/Content/upload/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function editNovel() {
+            $.ajax({
+                url: '/admin/novel/edit',
+                data: $("#addform").serialize(),
+                type: 'POST',
+                success: function (msg) {
+                    if (msg == "success") {
+                        alert("更新成功");
+                        window.location.href = "/admin/novel/index";
+                    }
+                    else {
+                        alert(msg);
+                    }
+                },
+                error: function (msg) {
+                    alert("网络异常，添加失败");
+                }
+            });
+        }
+    </script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="/admin/novel/index">小说管理</a><span class="crumb-step">&gt;</span><span>发布小说</span>
+    </div>
+</div>
+
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="/admin/novel/edit" method="post" id="addform" name="myform" enctype="multipart/form-data">
+            <table class="insert-tab" width="100%">
+                <tbody>
+                    <tr>
+                        <th width="120">
+                            <i class="require-red">*</i>分类：<input name="Id" value="@Model.Novel.Id" type="hidden" />
+                        </th>
+                        <td>
+                            <select name="CategoryId" id="CategoryId" class="CategoryId" style="min-width: 80px;">
+                                @if (Model.NovelCategories != null && Model.NovelCategories.Count > 0)
+                                {
+                                    foreach (var item in Model.NovelCategories)
+                                    {
+                                        if (Model.Novel.CategoryId == item.Id)
+                                        {
+                                    <option value="@item.Id" selected="selected">@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                    <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="">请选择</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>标题：
+                        </th>
+                        <td>
+                            <input class="common-text required" id="Title" name="Title" style="width: 700px;" value="@Model.Novel.Title" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>关键字：
+                        </th>
+                        <td>
+                            <input class="common-text" id="Keywords" name="Keywords" style="width: 700px;" value="@Model.Novel.Keywords" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述：
+                        </th>
+                        <td>
+                            <textarea id="Description" name="Description" class="common-text" rows="3" style="width: 700px; height: 80px; line-height: 20px; padding: 5px 4px; margin-top: 8px;"
+                                maxlength="500">@Model.Novel.Description</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>名称：
+                        </th>
+                        <td>
+                            <input class="common-text" name="Name" style="width: 400px;" value="@Model.Novel.Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>作者：
+                        </th>
+                        <td>
+                            <input class="common-text" name="Author" style="width: 400px;" value="@Model.Novel.Author" type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提交" type="button" onclick="editNovel()">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_4"));
+</script>

@@ -1,0 +1,8 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Common\bin\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Common\bin\Debug\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Common\obj\Debug\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.Common\obj\Debug\WitBird.Sex.Common.pdb

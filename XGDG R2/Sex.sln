@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Model", "WitBird.Sex.Model\WitBird.Sex.Model.csproj", "{642BD2F6-733C-4151-AE70-1C7EF79E0036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.DAL", "WitBird.Sex.DAL\WitBird.Sex.DAL.csproj", "{7110DAED-3C44-42A0-B245-0B7375FBB466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.BLL", "WitBird.Sex.BLL\WitBird.Sex.BLL.csproj", "{B4F323EA-DEC9-4200-90BA-09294200EAC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Common", "WitBird.Sex.Common\WitBird.Sex.Common.csproj", "{2D93F802-9615-4957-8875-72F7736A7D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Web", "WitBird.Sex.Web\WitBird.Sex.Web.csproj", "{48C36C55-993D-4B57-A0DD-9452431C1E8D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UIV2", "UIV2", "{309AD81D-5F3A-481C-BE09-679AEFB4E7B9}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/UIV2"
+		Debug.AspNetCompiler.PhysicalPath = "UIV2\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UIV2\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/UIV2"
+		Release.AspNetCompiler.PhysicalPath = "UIV2\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\UIV2\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49317"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://yixinyq.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WitBird.Sex.BLL\\WitBird.Sex.BLL.csproj
+		SccProjectName1 = WitBird.Sex.BLL
+		SccLocalPath1 = WitBird.Sex.BLL
+		SccProjectUniqueName2 = WitBird.Sex.Common\\WitBird.Sex.Common.csproj
+		SccProjectName2 = WitBird.Sex.Common
+		SccLocalPath2 = WitBird.Sex.Common
+		SccProjectUniqueName3 = WitBird.Sex.DAL\\WitBird.Sex.DAL.csproj
+		SccProjectName3 = WitBird.Sex.DAL
+		SccLocalPath3 = WitBird.Sex.DAL
+		SccProjectUniqueName4 = WitBird.Sex.Model\\WitBird.Sex.Model.csproj
+		SccProjectName4 = WitBird.Sex.Model
+		SccLocalPath4 = WitBird.Sex.Model
+		SccProjectUniqueName5 = WitBird.Sex.Web\\WitBird.Sex.Web.csproj
+		SccProjectName5 = WitBird.Sex.Web
+		SccLocalPath5 = WitBird.Sex.Web
+		SccWebProject6 = true
+		SccProjectUniqueName6 = UIV2
+		SccProjectName6 = UIV2
+		SccLocalPath6 = UIV2
+		SccProjectEnlistmentChoice6 = 2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309AD81D-5F3A-481C-BE09-679AEFB4E7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309AD81D-5F3A-481C-BE09-679AEFB4E7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309AD81D-5F3A-481C-BE09-679AEFB4E7B9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{309AD81D-5F3A-481C-BE09-679AEFB4E7B9}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,65 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.CategoryModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>SEO设置</span>
+    </div>
+</div>
+
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="/admin/category/edit" method="post" id="addform" name="myform" enctype="multipart/form-data">
+            <table class="insert-tab" width="100%">
+                <tbody>
+                    <tr>
+                        <th width="120">
+                            <i class="require-red"></i>分类：
+                        </th>
+                        <td>
+                            <input type="hidden" name="id" value="@Model.Category.Id" />@Model.Category.Name @Model.Category.Id
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>标题：
+                        </th>
+                        <td>
+                            <input class="common-text" id="t" name="t" style="width: 700px;" value="@Model.Category.Title" type="text" maxlength="300">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>关键字：
+                        </th>
+                        <td>
+                            <input class="common-text" id="k" name="k" style="width: 700px;" value="@Model.Category.Keywords" type="text" maxlength="300">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述：
+                        </th>
+                        <td>
+                            <textarea id="Description" name="d" class="common-text" rows="3" style="width: 700px; height: 150px; line-height: 20px; padding: 5px 4px; margin-top: 8px;"
+                                maxlength="300">@(new HtmlString(Model.Category.Description))</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>
+

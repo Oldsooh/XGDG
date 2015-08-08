@@ -1,0 +1,72 @@
+﻿@model WitBird.Sex.Web.Models.NewsRightModel
+
+<div class="title-a" style="margin-top: -10px;">
+    <h2>热搜词汇</h2>
+</div>
+<div class="tags">
+    @if (!string.IsNullOrEmpty(WitBird.Sex.Web.Cache.WebConfig.Tags) && WitBird.Sex.Web.Cache.WebConfig.Tags.Contains("+"))
+    {
+        string[] tags = WitBird.Sex.Web.Cache.WebConfig.Tags.Split('+');
+        if (tags != null && tags.Count() > 0)
+        {
+            foreach (var tag in tags)
+            {
+                if (!string.IsNullOrEmpty(tag))
+                {
+        <a href="/search/@tag" target="_blank" title="@tag">@tag</a>
+                }
+            }
+        }
+    }
+</div>
+
+<div class="title-a tj">
+    <h2>推荐资讯</h2>
+</div>
+@if (Model.RecommendNews != null && Model.RecommendNews.Count > 0)
+{
+    <ul class="newsrec">
+        @for (int i = 0; i < Model.RecommendNews.Count; i++)
+        {
+            var item = Model.RecommendNews[i];
+            var url = "/news/" + item.Id + ".html"; ;
+            if (i < 3)
+            {
+            <li><i class="tips">@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                target="_blank">@item.Title</a></h3>
+            </li>
+            }
+            else
+            {
+            <li><i>@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                    target="_blank">@item.Title</a></h3>
+            </li>
+            }
+        }
+    </ul>
+}
+<div class="title-a tj">
+    <h2>一周排行</h2>
+</div>
+@if (Model.TopNews != null && Model.TopNews.Count > 0)
+{
+    <ul class="newsrec">
+        @for (int i = 0; i < Model.TopNews.Count; i++)
+        {
+            var item = Model.TopNews[i];
+            var url = "/news/" + item.Id + ".html"; ;
+            if (i < 3)
+            {
+            <li><i class="tips">@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                target="_blank">@item.Title</a></h3>
+            </li>
+            }
+            else
+            {
+            <li><i>@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                    target="_blank">@item.Title</a></h3>
+            </li>
+            }
+        }
+    </ul>
+}

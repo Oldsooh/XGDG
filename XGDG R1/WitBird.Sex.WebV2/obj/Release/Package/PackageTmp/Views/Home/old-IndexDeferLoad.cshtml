@@ -1,0 +1,297 @@
+﻿@model WitBird.Sex.WebV2.Models.HomeModel
+
+<div class="index-box">
+    <div class="slide">
+        <div class="FocusPic">
+            <div class="content" id="main-slide">
+                <div class="changeDiv">
+                    @if (Model.Slides != null && Model.Slides.Count > 0)
+                    {
+                        foreach (var item in Model.Slides)
+                        {
+                        <a target="_blank" href="@item.Url" title="@item.Title">
+                            <img src="@Uitlity.WebHelper.GetImagePath(item.Image)" alt="@item.Title" width="745" height="340" /></a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="newpic">
+        <div class="title-a">
+            <h2>今日最新</h2>
+        </div>
+        <ul class="d1">
+            @if (Model.NewUploads != null && Model.NewUploads.Count > 0)
+            {
+                foreach (var item in Model.NewUploads)
+                {
+                    string url = "/show/" + item.Id + ".html";
+                <li><a target="_blank" href="@url" title="@item.Title">@item.Title</a>
+                </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="title-a mt20">
+    <h2>最新推荐</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendPictures != null && Model.RecommendPictures.Count > 0)
+        {
+            foreach (var item in Model.RecommendPictures)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a">
+    <h2>周美女排行</h2>
+</div>
+<div class="pic-list">
+    <ul class="mb7">
+        @if (Model.TopWomen != null && Model.TopWomen.Count > 0)
+        {
+            var item0 = Model.TopWomen[0];
+            string url0 = "/show/" + item0.Id + ".html";
+            
+            <li class="l">
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item0.UrlThumbnailWidth490x350)"
+                        alt="@item0.Title" width="490" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url0"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url0"
+                        title="@item0.Title">@item0.Title</a>
+                </div>
+            </li>
+            
+            for (int i = 1; i < Model.TopWomen.Count; i++)
+            {
+                var item = Model.TopWomen[i];
+                string url = "/show/" + item.Id + ".html";
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a" style="margin-top: 10px;">
+    <h2>周帅哥排行</h2>
+</div>
+<div class="pic-list">
+    <ul class="mb7">
+        @if (Model.TopMen != null && Model.TopMen.Count > 0)
+        {
+            var item0 = Model.TopMen[0];
+            string url0 = "/show/" + item0.Id + ".html";
+            
+            <li class="l">
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item0.UrlThumbnailWidth490x350)"
+                        alt="@item0.Title" width="490" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url0"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url0"
+                        title="@item0.Title">@item0.Title</a>
+                </div>
+            </li>
+            
+            for (int i = 1; i < Model.TopMen.Count; i++)
+            {
+                var item = Model.TopMen[i];
+                string url = "/show/" + item.Id + ".html";
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a mt20">
+    <h2>清纯校花</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendPure != null && Model.RecommendPure.Count > 0)
+        {
+            foreach (var item in Model.RecommendPure)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a mt20">
+    <h2>性感尤物</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendSexy != null && Model.RecommendSexy.Count > 0)
+        {
+            foreach (var item in Model.RecommendSexy)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a mt20">
+    <h2>时尚明星</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendStar != null && Model.RecommendStar.Count > 0)
+        {
+            foreach (var item in Model.RecommendStar)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a mt20">
+    <h2>古韵美女</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendCostume != null && Model.RecommendCostume.Count > 0)
+        {
+            foreach (var item in Model.RecommendCostume)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+<div class="title-a mt20">
+    <h2>潮流型男</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendStylishMan != null && Model.RecommendStylishMan.Count > 0)
+        {
+            foreach (var item in Model.RecommendStylishMan)
+            {
+                string url = "/show/" + item.Id + ".html";
+                
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                        alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                        title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+
+@Html.Action("FriendlyLink", "Home")

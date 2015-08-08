@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>网站地图</span>
+    </div>
+    <div class="result-wrap">
+        @ViewData["sitemap"].ToString()
+    </div>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>

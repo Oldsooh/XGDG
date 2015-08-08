@@ -1,0 +1,328 @@
+﻿@model WitBird.Sex.Web.Models.HomeModel
+
+<!-- 提示信息 -->
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <strong>温馨提示：</strong>本站全新升级UI，一站响应式支持所有设备，手机、平板、电脑，无需记住更多域名，访问一个样！
+    全新架构设计，CDN加速，给用户最好的浏览体验。<strong>访问速度快</strong>、<strong>图片质量高</strong>。如果喜欢本站，请按下快捷键 <span style="color: #FA4B6E;">Ctrl+D</span>一起收藏吧，更多美女等你来约！小编一定会努力更新哦:)
+</div>
+
+<!-- 焦点图 -->
+<div class="row tops">
+    <div class="col-md-9">
+        <div class="focus">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- 小点导航 -->
+                <ol class="carousel-indicators  hidden-xs hidden-sm">
+                    @if (Model.Slides != null && Model.Slides.Count > 0)
+                    {
+                        for (int i = 0; i < Model.Slides.Count; i++)
+                        {
+                            var isActive = i == 0 ? "active" : "";
+                            <li data-target="#carousel-example-generic" data-slide-to="@i" class="@isActive">
+                            </li>
+                        }
+                    }
+                </ol>
+                <!-- 正文图片 -->
+                <div class="carousel-inner" role="listbox">
+                    @if (Model.Slides != null && Model.Slides.Count > 0)
+                    {
+                        for (int i = 0; i < Model.Slides.Count; i++)
+                        {
+                            var isActive = i == 0 ? "active" : "";
+                            var item = Model.Slides[i];
+                            <div class="item @isActive" title="@item.Title">
+                                <a href="@item.Url">
+                                    <img src="@Uitlity.WebHelper.GetImagePath(item.Image)" alt="@item.Title">
+                                </a>
+                                @*<div class="carousel-caption  hidden-xs hidden-sm">
+                                    @(new HtmlString(item.Title))
+                                </div>*@
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- 左右控制 -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">上一页</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">下一页</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最新上传 -->
+    <div class="col-md-3">
+        <aside>
+            @if (Model.NewUploads != null && Model.NewUploads.Count > 0)
+            {
+                int maxCount = 5;
+                <div class="panel panel-default">
+                    <div class="panel-heading hidden-md hidden-lg">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-upload"></i>&nbsp; 最新上传</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.NewUploads)
+                        {
+                            if (maxCount < 1)
+                            {
+                                break;
+                            }
+                            maxCount--;
+                            string url = "/show/" + item.Id + ".html";
+                            string hiddenClass = string.Empty;
+                            if (maxCount == 2)
+                            {
+                                hiddenClass = "hidden-md";
+                            }
+
+                            <div class="media md-jj @hiddenClass">
+                                <div class="media-left media-middle">
+                                    <a href="@url">
+                                        <img class="media-object" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth102x102)" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url">@item.Title</a>
+                                    </h4>
+                                    <p>
+                                        分类：<a href="/@item.CategoryId/" title="@Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)">
+                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </aside>
+    </div>
+
+</div>
+<!-- 最新推荐 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp; 最新推荐</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendPictures != null && Model.RecommendPictures.Count > 0)
+    {
+        foreach (var item in Model.RecommendPictures)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<!-- 性感尤物 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 性感尤物</h2>
+            <span class="fr">
+                <a href="/sexy">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendSexy != null && Model.RecommendSexy.Count > 0)
+    {
+        foreach (var item in Model.RecommendSexy)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<!-- 清纯美女 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 清纯美女</h2>
+            <span class="fr">
+                <a href="/pure">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendPure != null && Model.RecommendPure.Count > 0)
+    {
+        foreach (var item in Model.RecommendPure)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- 明星美女 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 明星美女</h2>
+            <span class="fr">
+                <a href="/sexy">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendStar != null && Model.RecommendStar.Count > 0)
+    {
+        foreach (var item in Model.RecommendStar)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- 古韵美女 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 古韵美女</h2>
+            <span class="fr">
+                <a href="/costume" title="查看更多古韵美女">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendCostume != null && Model.RecommendCostume.Count > 0)
+    {
+        foreach (var item in Model.RecommendCostume)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- 型男帅哥 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 型男帅哥</h2>
+            <span class="fr">
+                <a href="/stylishman" title="查看更多型男帅哥">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendStylishMan != null && Model.RecommendStylishMan.Count > 0)
+    {
+        foreach (var item in Model.RecommendStylishMan)
+        {
+            string url = "/show/" + item.Id + ".html";
+
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="@url">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    </a>
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                            <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@*@Html.Action("FriendlyLink", "Home")*@

@@ -1,0 +1,96 @@
+﻿/*作者：键客邦 www.alicss.com*/
+/*模板定制开发，网站建设联系客服：QQ 2662492869*/
+/*此模板可用于图片分享，素材分享，视频分享，笑话文章分享等网站。*/
+
+/*全局*/
+body, html, ul, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, form, hr { margin: 0; padding: 0; }
+body { font-size: 12px; }
+a img { border: none; }
+ul, ol, dl { list-style-type: none; }
+a { color: #666; }
+    a:hover { text-decoration: underline; color: #FA4B6E; }
+
+/* 清除 */
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: "."; clear: both; height: 0; line-height: 0; overflow: hidden; }
+.clearfix { *zoom: 1; }
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.inlineblock { display: inline-block; zoom: 1; *display: inline; overflow: hidden; }
+
+/*共用*/
+body { background: #d9d9d9; /*background: url(../images/bg.png);*/ }
+.fl { float: left; }
+.fr { float: right; }
+.fa-arrow-right { color: #EB5753; }
+
+.fl-tit, .focus, .post, .widget, .pl-box { border-radius: 4px; }
+
+/*导航*/
+.nav-j { border-radius: 0; }
+.nav li:hover { background-color: #5cb85c; }
+.navbar { border: 0; }
+.navbar .logo { width: 160px; display: inline-block; float: left; line-height: 50px; height: 50px; }
+
+/*.nav ul li.line { width: 2px; height: 53px; background: url(../images/nav_line.png) no-repeat; }
+.navbar-inverse .navbar-nav > .hover a, .navbar-inverse .navbar-nav > .hover a:hover { background: url(../images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+.navbar-inverse .navbar-nav > li > a { width: 87px; height: 53px; text-align: center; display: block; color: #ccc; }
+    .navbar-inverse .navbar-nav > li > a:hover { background: #404040; height: 50px; }
+.stxt { width: 124px; height: 25px; float: right; padding: 0 30px 0 12px; color: #bbb; background: #fafafa; border: 1px solid #ddd; border-radius: 2px; margin-top: 13px; outline: none; }
+    .stxt:hover { color: #000; }
+.stxt-focus { color: #000; }
+.stxt-go { display: block; width: 32px; height: 32px; background: url(../images/menu_sprite.svg) 5px -93px no-repeat; float: right; cursor: pointer; margin-top: -29px; }
+    .stxt-go:hover { background-position-x: -44px; }*/
+/*提示信息*/
+.alert-warning { text-align: center; }
+
+/*焦点图*/
+.tops { margin-bottom: 20px; }
+.focus { background: #FFF; padding: 5px; }
+.carousel-inner .item img { height: 275px; width: 100%; }
+
+/*焦点图右侧*/
+.toppost { background: #FFF; padding: 5px; }
+    .toppost p { color: #999; line-height: 20px; }
+        .toppost p a { color: #999; }
+.media { margin-top: 0; }
+.media-left a img { width: 85px; height: 60px; }
+.media-heading { font-size: 12px; }
+    .media-heading a { width: 147px; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis; }
+
+/*栏目导航*/
+.fl-tit { background: #FFF; margin-bottom: 20px; }
+    .fl-tit span a { line-height: 39px; margin-right: 10px; }
+    .fl-tit h2 { font-size: 18px; font-weight: bold; padding: 10px; }
+        .fl-tit h2 i { color: #EB5753; }
+
+/*栏目缩略图*/
+.thumbnail img { width: 100%; padding: 2px; }
+.thumbnail { margin-bottom: 20px; border: none; }
+.caption { background: #FFF; padding: 5px; }
+    .caption h2 a { font-size: 12px; line-height: 24px; width: 147px; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis; }
+    .caption p { line-height: 24px; color: #999; }
+        .caption p span { margin-right: 10px; }
+.thumbnail .caption { padding: 0 5px; }
+
+/*垂直间距*/
+.jj { text-indent: -10000px; font-size: 0; height: 20px; }
+
+/*底部*/
+.copyright { background: #333; padding: 15px 0; text-align: center; }
+    .copyright p { line-height: 26px; color: #999; }
+        .copyright p a { color: #999; margin: 0 5px; }
+
+/*内容页模板*/
+.post, .pl-box { background: #FFF; margin-bottom: 20px; padding: 30px; }
+    .post h1 { font-size: 2em; }
+.sm-tit { line-height: 40px; text-align: center; color: #666; }
+.contes { padding: 20px 0; border-top: 1px dashed #dedede; border-bottom: 1px dashed #dedede; line-height: 26px; }
+.widget { background: #FFF; margin-bottom: 20px; }
+.wid-tool { padding: 10px; }
+.md-jj { padding: 5px 0; }
+.pages { text-align: center; padding-top: 20px; }
+    .pages .a1 { display: none; }
+.media-body p, .media-body p a { color: #999; }
+.md-jj { border-bottom: 1px dashed #dedede; }
+.panel-title i { color: #EB5753; }
+
+#gotop { display: none; cursor: pointer; width: 61px; height: 61px; position: fixed; bottom: 100px; left: 95%; background: url(../images/gettop.png) no-repeat 0px -201px; }

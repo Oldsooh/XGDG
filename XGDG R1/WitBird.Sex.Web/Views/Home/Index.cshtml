@@ -1,0 +1,28 @@
+﻿@model WitBird.Sex.Web.Models.HomeModel
+@{
+    ViewBag.Title = WitBird.Sex.Web.Cache.WebConfig.Title + "，" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = WitBird.Sex.Web.Cache.WebConfig.Keywords;
+    ViewBag.Description = WitBird.Sex.Web.Cache.WebConfig.Description;
+    ViewBag.MainTitle = WitBird.Sex.Web.Cache.WebConfig.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <style>
+        #home a, #home a:hover { background: url(/content/images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+    </style>
+    <script>
+
+        $(window).bind('beforeunload', function () {
+            $(window).unbind('beforeunload');
+            return "亲，如果喜欢本站的话就请添加收藏哦:)，你可以先留在此页面，通过右上角的'加入收藏夹'进行添加，或者手动输入快捷键Ctrl+D进行添加哦:)";
+        });
+
+    </script>
+}
+
+@Html.Action("IndexDeferLoad", "Home")
+
+@section foot
+{
+}

@@ -1,0 +1,197 @@
+﻿@model WitBird.Sex.Web.Models.SearchModel
+@{
+    ViewBag.Title = Model.Keywords + "的搜索结果 | " + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.Keywords;
+    ViewBag.Description = Model.Keywords + "的搜索结果, 一共有" + Model.TotalResultsCount.ToString() + "个相关结果";
+    ViewBag.MainTitle = Model.Keywords + "的搜索结果, 一共有" + Model.TotalResultsCount.ToString() + "个相关结果";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <style>
+        #home a, #home a:hover {
+            background: url(/content/images/nav_a_h.png) repeat-x;
+            width: 87px;
+            height: 53px;
+            color: #fff;
+        }
+    </style>
+}
+
+<div class="w">
+    <div class="place">
+        当前位置: <a href='/'>@WitBird.Sex.Web.Cache.WebConfig.WebName</a> > 搜索结果
+        > &#160;关键字"@Model.Keywords"的搜索结果
+    </div>
+</div>
+
+@if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+{
+    <div class="title-a mt10">
+        <h2>性感资讯里包含了@(Model.TotalNewsCount)个"@Model.Keywords"相关的结果</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul class="newsul">
+            @foreach (var item in Model.NewsResult)
+            {
+                string url = "/news/" + item.Id + ".html";
+                string title = item.Title;
+                string des = item.Description;
+                if (title.Contains(Model.Keywords))
+                {
+                    title = title.Replace(Model.Keywords, "<span style=\"color:#f00;font-weight: bold;\">" + Model.Keywords + "</span>");
+                }
+                if (des.Contains(Model.Keywords))
+                {
+                    des = des.Replace(Model.Keywords, "<span style=\"color:#f00;font-weight: bold;\">" + Model.Keywords + "</span>");
+                }
+                <li class="newsli" style="width:1000px;">
+                    <div class="newscover">
+                        <a href="@url" title="@item.Title" target="_blank">
+                            <img src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title" /></a>
+                    </div>
+                    <div class="newssummary">
+                        <h1 class="txt01" style="width: 996px;"><a href="@url" title="@item.Title" target="_blank">@(new HtmlString(title))
+                        </a></h1>
+                        <span class="txt02">@item.InsertTime.ToString("yyyy-MM-dd")</span>
+                        <p class="txt03" style="width: 996px;">
+                            @(new HtmlString(des))
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+{
+    <div class="title-a mt10">
+        <h2>图集里包含了@(Model.TotalAlbumCount)个"@Model.Keywords"相关的结果</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul>
+            @foreach (var item in Model.AlbumResult)
+            {
+                string url = "/show/" + item.Id.ToString() + ".html";
+                string title = item.Title;
+                if (title.Contains(Model.Keywords))
+                {
+                    title = title.Replace(Model.Keywords, "<span style=\"color:#f00;font-weight: bold;\">" + Model.Keywords + "</span>");
+                }
+                <li>
+                    <div class="picbox">
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                        <div>
+                            <b><a target="_blank" href="@url"></a></b>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" href="@url"
+                    title="@item.Title">@(new HtmlString(title))</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+}
+
+@if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+{
+    <div class="title-a">
+    @if (Model.TotalAlbumCount == 0 && Model.TotalNewsCount == 0)
+    {
+        <h2>根据"@Model.Keywords"没有找到相关结果, 我们为您精心推荐了一些图集</h2>
+    }
+    else
+    {
+        <h2>推荐图集</h2>
+    }
+    </div>
+    <div class="pic-list mb7 mt20">
+        <ul>
+            @foreach (var item in Model.RecommendAlbum)
+            {
+                string url = "/show/" + item.Id + ".html";
+                string title = item.Title;
+                if (title.Contains(Model.Keywords))
+                {
+                    title = title.Replace(Model.Keywords, "<span style=\"color:#f00;font-weight: bold;\">" + Model.Keywords + "</span>");
+                }
+                <li>
+                    <div class="picbox">
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                        <div>
+                            <b><a target="_blank" href="@url"></a></b>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" href="@url"
+                    title="@item.Title">@(new HtmlString(title))</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@if (Model.PageCount > 1)
+{
+    <div class="pages">
+        @for (int step = 1; step <= Model.PageCount; step = step + Model.PageStep)
+        {
+            if (Model.PageIndex >= step && Model.PageIndex < step + Model.PageStep)
+            {
+                //上一页
+                if (Model.PageIndex > 1)
+                {
+        <a href="/search/@Model.Keywords/@(Model.PageIndex - 1)">上一页</a>
+                }
+                //首页
+                if (Model.PageStep < Model.PageIndex)
+                {
+        <a href="/search/@Model.Keywords">1</a>
+        <a>...</a>
+                }
+                //分页
+                for (int i = step; i < step + Model.PageStep; i++)
+                {
+                    if (i <= Model.PageCount)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+        <a class="active">@i</a>
+                        }
+                        else
+                        {
+        <a href="/search/@Model.Keywords/@i">@i</a>
+                        }
+                    }
+                }
+                //末页
+                if (step + Model.PageStep <= Model.PageCount)
+                {
+        <a>...</a>
+        <a href="/search/@Model.Keywords/@Model.PageCount">@Model.PageCount</a>
+                }
+                //下一页
+                if (Model.PageIndex < Model.PageCount)
+                {
+        <a href="/search/@Model.Keywords/@(Model.PageIndex + 1)" class="next">下一页</a>
+                }
+            }
+        }
+    </div>
+    
+}
+@Html.Action("FriendlyLink", "Home")
+
+@section foot
+{
+    <script type="text/javascript">
+        document.getElementById("search").value = '@Model.Keywords';
+    </script>
+}

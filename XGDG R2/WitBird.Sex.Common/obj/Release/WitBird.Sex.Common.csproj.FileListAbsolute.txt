@@ -1,0 +1,9 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.Common\bin\Release\WitBird.Sex.Common.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.dll
+d:\Richard Workspace\ChongqingNet\XGDG R2\WitBird.Sex.Common\obj\Release\WitBird.Sex.Common.pdb

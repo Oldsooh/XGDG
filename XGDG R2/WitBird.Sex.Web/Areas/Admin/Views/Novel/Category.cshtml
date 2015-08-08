@@ -1,0 +1,176 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.NovelModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <script type="text/javascript">
+        function editcategory(obj) {
+            document.getElementById("addtable").style.display = 'none';
+            document.getElementById("edittable").style.display = 'block';
+            document.getElementById("txtId").value = obj.getAttribute('txtId');
+            document.getElementById("txtName").value = obj.getAttribute('txtName');
+            document.getElementById("txtSort").value = obj.getAttribute('txtSort');
+            document.getElementById("txtKeywords").value = obj.getAttribute('txtKeywords');
+            document.getElementById("txtDescription").value = obj.getAttribute('txtDescription');
+        }
+        function canneledit() {
+            document.getElementById("edittable").style.display = 'none';
+            document.getElementById("addtable").style.display = 'block';
+        }
+    </script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="/admin/novel/index">小说管理</a><span class="crumb-step">&gt;</span>
+        <span>分类设置</span>
+    </div>
+</div>
+<div class="search-wrap">
+    <div class="search-content">
+        <form action="/admin/novel/addcategory" method="post">
+        <table id="addtable" class="search-tab" style="display:block;">
+            <tbody>
+                <tr>
+                    <td style="width: 60px; text-align: right;">
+                        唯一ID:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="拼音、单词" name="Id" value="" id="" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        名称:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="中文名称" name="Name" value="" id="" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        排序:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="只能是数字" name="Sort" value="100" id="" type="text"
+                            style="width: 80px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 60px; text-align: right;">
+                        关键字:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="用于搜索引擎" name="Keywords" value="" id="" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        描述:
+                    </td>
+                    <td colspan="2">
+                        <input class="common-text" placeholder="用于搜索引擎" name="Description" value="" id="" type="text"
+                            style="width: 150px;">
+                    </td>
+                    <td>
+                        <input class="btn btn-primary btn2" name="sub" value="添加" type="submit">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+        <form action="/admin/novel/editcategory" method="post">
+        <table id="edittable" class="search-tab" style="display:none;">
+            <tbody>
+                <tr>
+                    <td style="width: 60px; text-align: right;">
+                        唯一ID:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="拼音、单词" name="Id" value="" id="txtId" type="text" readonly="true"
+                            style="width: 100px; border:none;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        名称:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="中文名称" name="Name" value="" id="txtName" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        排序:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="只能是数字" name="Sort" value="100" id="txtSort" type="text"
+                            style="width: 80px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 60px; text-align: right;">
+                        关键字:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="用于搜索引擎" name="Keywords" value="" id="txtKeywords" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 60px; text-align: right;">
+                        描述:
+                    </td>
+                    <td colspan="2">
+                        <input class="common-text" placeholder="用于搜索引擎" name="Description" value="" id="txtDescription" type="text"
+                            style="width: 150px;">
+                    </td>
+                    <td>
+                        <input class="btn btn-primary btn5" name="sub" value="更新" type="submit">
+                        <input class="btn btn5" value="取消" type="button" onclick="canneledit()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+    <div class="result-content" style="min-height: 441px;">
+        <table class="result-tab" style="width: 700px;">
+            <tbody>
+                <tr>
+                    <th>
+                        唯一ID
+                    </th>
+                    <th>
+                        名称
+                    </th>
+                    <th>
+                        排序
+                    </th>
+                    <th>
+                        操作
+                    </th>
+                </tr>
+                @if (Model.NovelCategories != null && Model.NovelCategories.Count > 0)
+                {
+                    foreach (var item in Model.NovelCategories)
+                    {
+                    <tr>
+                        <td>@item.Id
+                        </td>
+                        <td>@item.Name
+                        </td>
+                        <td>@item.Sort
+                        </td>
+                        <td>
+                            <a class="link-update" href="#" onclick="editcategory(this)" txtId="@item.Id" txtName="@item.Name" txtSort="@item.Sort" txtKeywords="@item.Keywords" txtDescription="@item.Description">修改</a> &nbsp;&nbsp;
+                            <a class="link-del" href="/admin/novel/deletecategory/@item.Id" onclick="if(confirm('亲，你确认要删除 (@item.Name) 吗？')==false)return false;">删除</a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_4"));
+</script>

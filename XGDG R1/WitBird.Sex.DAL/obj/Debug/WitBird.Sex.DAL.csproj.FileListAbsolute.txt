@@ -1,0 +1,14 @@
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.Model.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.Model.pdb
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\Richard-XGDG\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.DAL.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.Model.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\bin\Debug\WitBird.Sex.Model.pdb
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.csprojResolveAssemblyReference.cache
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.dll
+d:\Richard Workspace\ChongqingNet\XGDG R1\WitBird.Sex.DAL\obj\Debug\WitBird.Sex.DAL.pdb

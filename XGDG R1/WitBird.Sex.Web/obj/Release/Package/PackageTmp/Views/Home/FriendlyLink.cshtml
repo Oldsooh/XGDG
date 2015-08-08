@@ -1,0 +1,15 @@
+﻿<div class="title-a"><strong>友情链接</strong> </div>
+<div class="w">
+    <div class="linkbox-t"></div>
+    <div class="linkbox">
+        <ul class="txt-links">
+            @if (WitBird.Sex.Web.Cache.FriendlyLinks != null && WitBird.Sex.Web.Cache.FriendlyLinks.Count > 0)
+                    {
+                        foreach (var item in WitBird.Sex.Web.Cache.FriendlyLinks)
+                        {
+                <li><a href="@item.Link" title="@item.Name"  target='_blank'>@item.Name</a></li>
+                        }
+                    }
+        </ul>
+    </div>
+</div>

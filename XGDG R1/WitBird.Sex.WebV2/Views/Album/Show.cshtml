@@ -1,0 +1,191 @@
+﻿@model WitBird.Sex.WebV2.Models.ImageModel
+@{
+    ViewBag.Title = Model.Album.Title;
+    ViewBag.Keywords = Model.Album.Keywords;
+    ViewBag.Description = Model.Album.Description;
+    ViewBag.MainTitle = Model.Album.Title + "，" + WitBird.Sex.WebV2.Cache.WebConfig.WebName;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <style type="text/css">
+        .photo_prev a { cursor: url("/content/images/prev.cur"), auto; }
+        .photo_next a { cursor: url("/content/images/next.cur"), auto; }
+        #@Model.Category.Id a, #@Model.Category.Id a:hover { background: url(/content/images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+    </style>
+}
+
+<div class="w">
+    <div class="place">
+        当前位置: <a href='/'>@WitBird.Sex.WebV2.Cache.WebConfig.WebName</a> > <a href='/@Model.Category.Id/'>@Model.Category.Name</a>
+        > &#160;@Model.Album.Title
+    </div>
+</div>
+
+<div id="content" style="margin: 10px 0;">
+    <div class="title">
+        <h1>@Model.Album.Title</h1>
+        <div class="steps">
+            <span class="nowpage"><span id="nowpage"></span></span>/
+            <span class="totalpage"><span id="totalpage"></span></span>
+            <div class="view" title="点击量">@Model.Album.ViewTime</div>
+        </div>
+        <div class="tips">支持 ← →键盘翻页</div>
+    </div>
+    <div class="big-pic">
+        <div id="big-pic">
+            <a href='@Uitlity.WebHelper.GetImagePath(Model.Images[0].UrlOriginal)'>
+                <img alt="@Model.Album.Title" src="@Uitlity.WebHelper.GetImagePath(Model.Images[0].UrlOriginal)" /></a>
+        </div>
+        <div class="photo_prev">
+            <a id="photoPrev" title="上一张" class="btn_pphoto" target="_self"
+                hidefocus="true" href="javascript:showpic('pre');;"></a>
+        </div>
+        <div class="photo_next">
+            <a id="photoNext" title="下一张" class="btn_nphoto" target="_self"
+                hidefocus="true" href="javascript:showpic('next');"></a>
+        </div>
+        <div id="endSelect" style="display: none;">
+            <div id="endSelClose" onclick="$('#endSelect').hide();"></div>
+            <div class="bg"></div>
+        </div>
+    </div>
+    <div class="type">
+        <div class="dingyue">
+            <strong>所属图集:<a href="/@Model.Category.Id" title="@Model.Category.Name">@Model.Category.Name</a></strong>
+            <strong>&nbsp;&nbsp;<a href="javascript:showpic('big');" target="_blank" title="点击查看原图，完美视觉盛宴">查看高清原图</a></strong>
+        </div>
+        <div class="share" style="width: auto;">
+            <div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+                <img src="http://bdimg.share.baidu.com/static/images/type-button-7.jpg?cdnversion=@(DateTime.Now)" />
+            </div>
+            <script type="text/javascript" id="bdshare_js" data="type=button&uid=0"></script>
+            <script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+            </script>
+        </div>
+    </div>
+    <div class="list-pic">
+        <div class="pre picbig">
+            <div class="img-wrap">
+                @if (Model.LastAlbum != null)
+                {
+                    <a href='/show/@(Model.LastAlbum.Id).html' class="prev">
+                        <i></i>
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(Model.LastAlbum.UrlThumbnailWidth102x102)" alt="@Model.LastAlbum.Title" /><span>上一组</span></a>
+                }
+                else
+                {
+                    <img data-original="/content/images/nophoto.jpg" alt="没有上一图集了" src="/content/images/nophoto.jpg"
+                        style="display: inline;">
+                }
+            </div>
+        </div>
+        <a href="javascript:showpic('pre');" class="pre-bnt"><span></span></a>
+        <div class="cont" style="position: relative">
+            <ul class="cont picbig" id="pictureurls" style="position: absolute">
+                @for (int i = 0; i < Model.Images.Count; i++)
+                {
+                    var item = Model.Images[i];
+                    var title = "第" + (i + 1) + "张";
+                    <li>
+                        <div class="img-wrap">
+                            <a href="javascript:void(0);" hidefocus="true">
+                                <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth102x102)" title="@title" 
+                                rel="@Uitlity.WebHelper.GetImagePath(item.UrlOriginal)" big ="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailHeight200)" /><span>@(i + 1)</span></a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <a href="javascript:showpic('next');" class="next-bnt"><span></span></a>
+        <div class="next picbig">
+            <div class="img-wrap">
+                @if (Model.NextAlbum != null)
+                {
+                    <a href='/show/@(Model.NextAlbum.Id).html'>
+                        <i></i>
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(Model.NextAlbum.UrlThumbnailWidth102x102)" alt="@Model.NextAlbum.Title" /><span>下一组</span></a>
+                }
+                else
+                {
+                    <img data-original="/content/images/nophoto.jpg" alt="没有下一图集了" src="/content/images/nophoto.jpg"
+                        style="display: inline;">
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+{
+    var maxCount = 4;
+    <div class="title-a mt20">
+        <h2>相关图集</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul>
+            @foreach (var item in Model.RelatedAlbum)
+            {
+                if (maxCount == 0)
+                {
+                    break;
+                }
+
+                --maxCount;
+
+                string url = "/show/" + item.Id + ".html";
+                <li>
+                    <div class="picbox">
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                        <div>
+                            <b><a target="_blank" href="@url"></a></b>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" href="@url"
+                    title="@item.Title">@item.Title</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="title-a mt20">
+    <h2>推荐图集</h2>
+</div>
+<div class="pic-list mb7">
+    <ul>
+        @if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+        {
+            foreach (var item in Model.RecommendAlbum)
+            {
+
+                string url = "/show/" + item.Id + ".html";
+            <li>
+                <div class="picbox">
+                    <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                    <div>
+                        <b><a target="_blank" href="@url"></a></b>
+                    </div>
+                </div>
+                <div class="name">
+                    <a target="_blank" href="@url"
+                    title="@item.Title">@item.Title</a>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+
+@section foot
+{
+    @*@(new HtmlString(WitBird.Sex.WebV2.Cache.GetAdvertisement(2).AdLink))*@
+
+    <script type="text/javascript" src="/content/script/content.js"></script>
+}

@@ -1,0 +1,108 @@
+﻿@model WitBird.Sex.WebV2.Models.NewsModel
+@{
+    ViewBag.Title = Model.News.Title + "，" + WitBird.Sex.WebV2.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.News.Keywords;
+    ViewBag.Description = Model.News.Description;
+    ViewBag.MainTitle = Model.News.Title + "，" + WitBird.Sex.WebV2.Cache.WebConfig.WebName;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@section head
+{
+    <style>
+    #news a, #news a:hover { background: url(/content/images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+    body {background:#FFF;}
+</style>
+}
+<div class="w">
+    <div class="place">
+        当前位置: <a href='/'>@WitBird.Sex.WebV2.Cache.WebConfig.WebName</a> > 
+        <a href='/news'>性感资讯</a> > 
+        &#160;@Model.News.Title
+    </div>
+</div>
+<div class="mainleft">
+    <div class="showtitle">
+        <h1>@Model.News.Title</h1>
+        <span class="showcategory">@Model.News.Category.Name</span>
+        <span class="showauthor">@Model.News.Author</span>
+        <span class="showposttype">@Model.News.PostType</span>
+        <span class="showdate">@Model.News.InsertTime.ToString("yyyy-MM-dd HH:mm")</span>
+        <span class="showview">@Model.News.ViewCount</span>
+        <div class="share" style="width: auto;">
+            <div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+                <img src="http://bdimg.share.baidu.com/static/images/type-button-7.jpg?cdnversion=@(DateTime.Now)" />
+            </div>
+            <script type="text/javascript" id="bdshare_js" data="type=button&uid=0"></script>
+            <script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+            </script>
+        </div>
+    </div>
+    <div class="showsummary">
+        [摘要] @Model.News.Description
+    </div>
+    <div class="showcontent">
+        @(new HtmlString(Model.News.ContentStyle))
+    </div>
+</div>
+<div class="mainright">
+    @Html.Action("NewsRight", "News")
+
+    <div class="title-a tj">
+        <h2>相关资讯</h2>
+    </div>
+
+    @if (Model.RelatedNews != null && Model.RelatedNews.Count > 0)
+    {
+        <ul class="newsrec">
+            @for (int i = 0; i < Model.RelatedNews.Count; i++)
+            {
+                var item = Model.RelatedNews[i];
+                var url = "/news/" + item.Id + ".html"; ;
+                if (i < 3)
+                {
+                <li><i class="tips">@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                target="_blank">@item.Title</a></h3>
+                </li>
+                }
+                else
+                {
+                <li><i>@(i + 1)</i><h3><a href="@url" title="@item.Title"
+                    target="_blank">@item.Title</a></h3>
+                </li>
+                }
+            }
+        </ul>
+    }
+</div>
+
+<div style="clear: both"></div>
+@if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+{
+    <div class="title-a mt20">
+        <h2>相关图集</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul>
+            @foreach (var item in Model.RelatedAlbum)
+            {
+                string url = "/show/" + item.Id + ".html";
+                <li>
+                    <div class="picbox">
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                        <div>
+                            <b><a target="_blank" href="@url"></a></b>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" href="@url"
+                    title="@item.Title">@item.Title</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

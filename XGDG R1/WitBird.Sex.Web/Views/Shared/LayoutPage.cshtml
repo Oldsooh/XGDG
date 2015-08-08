@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <link href="/content/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/content/style/style.css" rel="stylesheet" media="screen" type="text/css" />
+    <script type="text/javascript">window.onerror = function () { return true; }</script>
+    <script type="text/javascript">
+        var mobileUrl = "@WitBird.Sex.Web.Cache.WebConfig.DomainMobile",
+            mobile = (/mmp|symbian|smartphone|midp|wap|phone|xoom|iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+        if (mobile) {
+            //window.location = mobileUrl;
+        }
+    </script>
+    @RenderSection("head", false)
+</head>
+<body>
+    <span style="display: none;">
+        @(new HtmlString(WitBird.Sex.Web.Cache.WebConfig.StatisticalCode))</span>
+    <div class="header">
+        <div class="w">
+            <div class="logo">
+                <a href="/">
+                    <img src="/content/images/logo.png" height="43" width="130" style="margin-top: 3px"
+                        alt="性感帝国LOGO" />
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="line"></li>
+                    <li id="home" class="hover"><a href='/'>首页</a></li>
+                    @if (WitBird.Sex.Web.Cache.Categories != null)
+                    {
+                        foreach (var item in WitBird.Sex.Web.Cache.Categories)
+                        {
+                        <li class="line"></li>
+                        <li id="@item.Id"><a href='/@item.Id'>@item.Name</a></li>
+                        }
+                    }
+                    <li class='line'></li>
+                </ul>
+                <input id="search" type="text" name="keywords" placeholder="搜索你喜欢的" autocomplete="off"
+                    maxlength="15" />
+                <button id="searchbtn" class="go"></button>
+            </div>
+        </div>
+        <div class="righttop">
+            <a href="javascript:AddFavorite()" title="喜欢本站赶紧加入收藏夹吧，下次访问更方便">加入收藏夹</a>
+
+            @*<a href="javascript:void(0);" title="该功能正在开发中，期待下次升级">
+                登录</a>
+            <a href="javascript:void(0);" title="该功能正在开发中，期待下次升级">注册</a>*@
+
+        </div>
+    </div>
+
+    <div class="main">
+        @RenderBody()
+
+    </div>
+
+    <div class="footer">
+        <div class="finner">
+            <div class="flogo"></div>
+            <div class="fabout">
+                <div class="flinks">
+                    <a
+                        href='/home/aboutus'>免责声明</a><b>&#8226;</b>
+                    <a
+                        href='javascript:void(0)'>联系我们：122889741@qq.com</a>
+
+                </div>
+                <div class="w">
+                    Copyright &copy; 2013-2015 [@WitBird.Sex.Web.Cache.WebConfig.WebName] &nbsp;&nbsp;
+                    @WitBird.Sex.Web.Cache.WebConfig.ICP &nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="gotop" title="回到顶部"></div>
+    <script type="text/javascript" src="/content/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/content/script/jquery.sgallery.js"></script>
+    <script type="text/javascript" src="/content/script/global.js"></script>
+    <script type="text/javascript" src="/content/script/jquery.lazyload.min.js"></script>
+    <!--[if IE 6]>
+<script src="/content/script/png.js"></script>
+<script>
+  DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+    <script type="text/javascript">
+        $(function () {
+            new slide("#main-slide", "cur", 745, 340, 1);//焦点图
+        })
+    </script>
+
+    @RenderSection("foot", false)
+    @*@(new HtmlString(WitBird.Sex.Web.Cache.GetAdvertisement(1).AdLink))*@
+
+</body>
+</html>

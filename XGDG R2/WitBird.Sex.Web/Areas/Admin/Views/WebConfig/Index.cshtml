@@ -1,0 +1,192 @@
+﻿@model WitBird.Sex.Model.WebConfig
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>系统设置</span>
+</div>
+<div class="result-wrap">
+    <form action="/admin/webconfig/edit" method="post" method="post" id="myform" name="myform">
+    <div class="config-items">
+        <div class="config-title">
+            <h1>
+                <i class="icon-font">&#xe00a;</i>网站信息设置
+            </h1>
+        </div>
+        <div class="result-content">
+            <table width="100%" class="insert-tab">
+                <tbody>
+                    <tr>
+                        <th width="15%">
+                            <i class="require-red">*</i>网站名称：<input type="hidden" value="@Model.Id" />
+                        </th>
+                        <td>
+                            <input type="text" id="WebName" value="@Model.WebName" style="width:700px;" name="WebName" class="common-text" maxlength="100">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>标题：
+                        </th>
+                        <td>
+                            <input type="text" id="Title" value="@Model.Title" style="width:700px;" name="Title" class="common-text" maxlength="100">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red"></i>关键字：
+                        </th>
+                        <td>
+                            <input type="text" id="Keywords" value="@Model.Keywords" style="width:700px;" name="Keywords" class="common-text" maxlength="200">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red"></i>站点描述：
+                        </th>
+                        <td>
+                            <textarea id="Description" name="Description" class="common-text" rows="3" style="width:700px; height:60px; line-height:20px; padding: 5px 4px; margin-top: 15px;" maxlength="300">@Model.Description</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>电脑版域名：
+                        </th>
+                        <td>
+                            <input type="text" id="DomainName" value="@Model.DomainName" style="width:700px;" name="DomainName" class="common-text" maxlength="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>移动版域名：
+                        </th>
+                        <td>
+                            <input type="text" id="DomainMobile" value="@Model.DomainMobile" style="width:700px;" name="DomainMobile" class="common-text" maxlength="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>图片域名：
+                        </th>
+                        <td>
+                            <input type="text" id="DomainImage" value="@Model.DomainImage" style="width:700px;" name="DomainImage" class="common-text" maxlength="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>网站公告：
+                        </th>
+                        <td>
+                            <input type="text" id="Notice" value="@Model.Notice" style="width:700px;" name="Notice" class="common-text" maxlength="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red"></i>备案ICP：
+                        </th>
+                        <td>
+                            <input type="text" id="ICP" value="@Model.ICP" style="width:700px;" name="ICP" class="common-text"  maxlength="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red"></i>统计代码：
+                        </th>
+                        <td>
+                            <textarea id="StatisticalCode" name="StatisticalCode" class="common-text" rows="3" style="width:700px; height:60px; line-height:20px; padding: 5px 4px; margin-top: 15px;"  maxlength="3000">@Model.StatisticalCode</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red"></i>搜索标签：
+                        </th>
+                        <td>
+                            <textarea id="Tags" name="Tags" class="common-text" rows="3" style="width:700px; height:60px; line-height:20px; padding: 5px 4px; margin-top: 15px;"  maxlength="3000">@Model.Tags</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <td>
+                            <input type="submit" value="更 新" class="btn btn-primary btn6 mr10">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="config-items">
+        <div class="config-title">
+            <h1>
+                <i class="icon-font">&#xe014;</i>联系方式设置
+            </h1>
+        </div>
+        <div class="result-content">
+            <table width="100%" class="insert-tab">
+                <tr>
+                    <th width="15%">
+                        <i class="require-red"></i>服务邮箱：
+                    </th>
+                    <td>
+                        <input type="text" id="Email" value="@Model.Email" style="width:700px;" name="Email" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red"></i>固定电话：
+                    </th>
+                    <td>
+                        <input type="text" id="Tel" value="@Model.Tel" style="width:700px;" name="Tel" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red"></i>移动电话：
+                    </th>
+                    <td>
+                        <input type="text" id="Phone" value="@Model.Phone" style="width:700px;" name="Phone" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red"></i>服务地址：
+                    </th>
+                    <td>
+                        <input type="text" id="Address" value="@Model.Address" style="width:700px;" name="Address" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red"></i>新浪微博：
+                    </th>
+                    <td>
+                        <input type="text" id="Weibo" value="@Model.Weibo" style="width:700px;" name="Weibo" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red"></i>QQ账号：
+                    </th>
+                    <td>
+                        <input type="text" id="QQ" value="@Model.QQ" style="width:700px;" name="QQ" class="common-text"  maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                    <td>
+                        <input type="submit" value="更 新" class="btn btn-primary btn6 mr10">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>

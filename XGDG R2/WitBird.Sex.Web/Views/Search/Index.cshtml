@@ -1,0 +1,198 @@
+﻿@model WitBird.Sex.Web.Models.SearchModel
+@{
+    ViewBag.Title = Model.Keywords + "的搜索结果 | " + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.Keywords;
+    ViewBag.Description = Model.Keywords + "的搜索结果, 一共有" + Model.TotalResultsCount.ToString() + "个相关结果";
+    ViewBag.MainTitle = Model.Keywords + "的搜索结果, 一共有" + Model.TotalResultsCount.ToString() + "个相关结果";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+}
+<!-- 面包屑 -->
+@*<ol class="breadcrumb hidden-xs">
+        <li>当前位置</li>
+        <li><a href="/">首页</a></li>
+        <li class="active">
+            搜索结果
+            / &#160;关键字"@Model.Keywords"的搜索结果
+        </li>
+    </ol>*@
+
+@if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fl-tit clearfix">
+                <h2 class="fl"><i class="glyphicon glyphicon-file"></i>&nbsp; 资讯里包含了@(Model.TotalNewsCount)个"@Model.Keywords"相关的结果</h2>
+            </div>
+        </div>
+    </div>
+    <div id="news" class="row">
+        @if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+        {
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @foreach (var item in Model.NewsResult)
+                        {
+                            string url = "/news/" + item.Id + ".html";
+                            <div class="media md-jj">
+                                <div class="media-left media-middle hidden-xs">
+                                    <a href="@url">
+                                        <img class="media-object" src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url">@item.Title</a>
+                                    </h4>
+                                    <p class="p">
+                                        @item.Description
+                                    </p>
+                                    <p>
+                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewCount</span>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fl-tit clearfix">
+                <h2 class="fl"><i class="glyphicon glyphicon-camera"></i>&nbsp; 图集里包含了@(Model.TotalAlbumCount)个"@Model.Keywords"相关的结果</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+        {
+            foreach (var item in Model.AlbumResult)
+            {
+                string url = "/show/" + item.Id + ".html";
+                <div class="col-xs-6 col-md-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="@url">
+                            <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                        </a>
+                        <div class="caption">
+                            <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                            <p>
+                                <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>
+                                &nbsp;&nbsp;
+                                <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+}
+
+@if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fl-tit clearfix">
+                @if (Model.TotalAlbumCount == 0 && Model.TotalNewsCount == 0)
+                {
+                    <h2 class="fl"><i class="glyphicon glyphicon-camera"></i>&nbsp; 根据"@Model.Keywords"没有找到相关结果, 我们为您精心推荐了一些图集</h2>
+                }
+                else
+                {
+                    <h2 class="fl"><i class="glyphicon glyphicon-camera"></i>&nbsp; 推荐图集</h2>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+        {
+            foreach (var item in Model.RecommendAlbum)
+            {
+                string url = "/show/" + item.Id + ".html";
+                <div class="col-xs-6 col-md-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="@url">
+                            <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                        </a>
+                        <div class="caption">
+                            <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                            <p>
+                                <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>
+                                &nbsp;&nbsp;
+                                <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+
+@if (Model.PageCount > 1)
+{
+    <div class="pages">
+        @if (Model.PageCount > 1)
+        {
+            for (int step = 1; step <= Model.PageCount; step = step + Model.PageStep)
+            {
+                if (Model.PageIndex >= step && Model.PageIndex < step + Model.PageStep)
+                {
+                    //首页
+                    if (Model.PageStep < Model.PageIndex)
+                    {
+                        <a class="a1 btn btn-default" href="/search/@Model.Keywords/1">首页</a>
+                    }
+                    //上一页
+                    if (Model.PageIndex > 1)
+                    {
+                        <a class="a1 btn btn-default" href="/search/@Model.Keywords/@(Model.PageIndex - 1)">上一页</a>
+                    }
+                    //分页
+                    for (int i = step; i < step + Model.PageStep; i++)
+                    {
+                        if (i <= Model.PageCount)
+                        {
+                            if (i == Model.PageIndex)
+                            {
+                                <span class="btn btn-danger">@i</span>
+                            }
+                            else
+                            {
+                                <a href="/search/@Model.Keywords/@i" class="btn btn-default">@i</a>
+                            }
+                        }
+                    }
+                    //下一页
+                    if (Model.PageIndex < Model.PageCount)
+                    {
+                        <a class="a1 btn btn-default" href="/search/@Model.Keywords/@(Model.PageIndex + 1)">下一页</a>
+                    }
+                    //末页
+                    if (step + Model.PageStep <= Model.PageCount)
+                    {
+                        <a class="a1 btn btn-default" href="/search/@Model.Keywords/@Model.PageCount">末页</a>
+                    }
+                }
+            }
+        }
+
+    </div>
+}
+
+@section foot
+{
+}

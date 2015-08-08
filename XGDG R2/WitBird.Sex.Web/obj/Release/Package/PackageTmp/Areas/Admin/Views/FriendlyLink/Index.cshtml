@@ -1,0 +1,168 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.FriendlyLinkModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <script src="/Areas/Admin/Content/upload/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="/Areas/Admin/Content/upload/jquery.form.js" type="text/javascript"></script>
+    <script src="/Areas/Admin/Content/upload/uploadimage.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function editfriendlylink(obj) {
+            document.getElementById("addtable").style.display = 'none';
+            document.getElementById("edittable").style.display = 'block';
+            document.getElementById("txtId").value = obj.getAttribute('txtId');
+            document.getElementById("txtName").value = obj.getAttribute('txtName');
+            document.getElementById("txtLink").value = obj.getAttribute('txtLink');
+            document.getElementById("txtLogo").value = obj.getAttribute('txtLogo');
+            document.getElementById("txtSort").value = obj.getAttribute('txtSort');
+        }
+        function canneledit() {
+            document.getElementById("edittable").style.display = 'none';
+            document.getElementById("addtable").style.display = 'block';
+        }
+    </script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>友情链接</span>
+    </div>
+</div>
+<div class="search-wrap">
+    <div class="search-content">
+        <form action="/admin/friendlylink/addfriendlylink" method="post">
+        <table id="addtable" class="search-tab" style="display: block;">
+            <tbody>
+                <tr>
+                    <td style="width: 50px; text-align: right;">
+                        名称:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="网站名称" name="Name" value="" id="" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        连接:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="http://开头" name="Link" value="" id="" type="text"
+                            style="width: 180px;">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        Logo:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="Logo链接地址 180*60" name="Logo" value="" id="txtLogo2"
+                            type="text" style="width: 180px;" onclick="uploadimage(this)" url="/Areas/Admin/content/upload/uploadimage18060.ashx">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        排序:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="只能是数字" name="Sort" value="100" id="" type="text"
+                            style="width: 80px;">
+                    </td>
+                    <td>
+                        <input class="btn btn-primary btn2" name="sub" value="添加" type="submit">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+        <form action="/admin/friendlylink/editfriendlylink" method="post">
+        <table id="edittable" class="search-tab" style="display: none;">
+            <tbody>
+                <tr>
+                    <td style="width: 50px; text-align: right;">
+                        名称:<input name="Id" value="0" id="txtId" type="hidden" />
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="网站名称" name="Name" value="" id="txtName" type="text"
+                            style="width: 100px;">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        连接:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="http://开头" name="Link" value="" id="txtLink"
+                            type="text" style="width: 180px;">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        Logo:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="Logo链接地址 180*60" name="Logo" value="" id="txtLogo"
+                            type="text" style="width: 180px;" onclick="uploadimage(this)" url="/Areas/Admin/content/upload/uploadimage18060.ashx">
+                    </td>
+                    <td style="width: 40px; text-align: right;">
+                        排序:
+                    </td>
+                    <td>
+                        <input class="common-text" placeholder="只能是数字" name="Sort" value="100" id="txtSort"
+                            type="text" style="width: 80px;">
+                    </td>
+                    <td>
+                        <input class="btn btn-primary btn5" name="sub" value="更新" type="submit">
+                        <input class="btn btn5" value="取消" type="button" onclick="canneledit()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+    <div class="result-content" style="min-height: 441px;">
+        <table class="result-tab" style="width: 900px;">
+            <tbody>
+                <tr>
+                    <th>
+                        网站名称
+                    </th>
+                    <th>
+                        超连接
+                    </th>
+                    <th>
+                        Logo
+                    </th>
+                    <th>
+                        排序
+                    </th>
+                    <th>
+                        操作
+                    </th>
+                </tr>
+                @if (Model.FriendlyLinks != null && Model.FriendlyLinks.Count > 0)
+                {
+                    foreach (var item in Model.FriendlyLinks)
+                    {
+                    <tr>
+                        <td>@item.Name
+                        </td>
+                        <td>@item.Link
+                        </td>
+                        <td>@item.Logo
+                        </td>
+                        <td>@item.Sort
+                        </td>
+                        <td>
+                            <a class="link-update" href="#" onclick="editfriendlylink(this)" txtId="@item.Id" txtName="@item.Name" txtLink="@item.Link" txtLogo="@item.Logo" txtSort="@item.Sort">
+                                修改</a> &nbsp;&nbsp; <a class="link-del" href="/admin/friendlylink/deletefriendlylink/@item.Id" onclick="if(confirm('亲，你确认要删除 (@item.Name) 吗？')==false)return false;">
+                                    删除</a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>

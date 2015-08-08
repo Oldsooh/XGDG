@@ -1,0 +1,92 @@
+﻿@model WitBird.Sex.Web.Models.SearchModel
+@{
+    ViewBag.Title = "404，帅哥靓妹不在家, " + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = "404，帅哥靓妹不在家";
+    ViewBag.Description = "404，帅哥靓妹不在家";
+    ViewBag.MainTitle = "404，帅哥靓妹不在家";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+    Response.Status = "404 Not Found";
+    Response.StatusCode = 404;
+}
+@section head
+{
+    <style>
+        #home a, #home a:hover {
+            background: url(/content/images/nav_a_h.png) repeat-x;
+            width: 87px;
+            height: 53px;
+            color: #fff;
+        }
+    </style>
+}
+<div class="tj"></div>
+<div class="title-a mt20">
+    <h2><span style="font-size: 50px; color: #FA4B6E;">404</span>
+    &nbsp;帅哥靓妹不在家, 不用担心, 我们为您精心推荐了一些<a href="#1">资讯</a>和<a href="#2">图集</a>，赶紧查看吧</h2>
+</div>
+<div class="tj"></div>
+@if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+{
+    int maxCount = 3;
+    <div class="title-a mt10" id="1" name ="1">
+        <h2>推荐资讯</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul class="newsul">
+            @foreach (var item in Model.NewsResult)
+            {
+                if (--maxCount < 0)
+                {
+                    break;
+                }
+                string url = "/news/" + item.Id + ".html";
+                <li class="newsli" style="width: 1000px;">
+                    <div class="newscover">
+                        <a href="@url" title="@item.Title" target="_blank">
+                            <img src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title" /></a>
+                    </div>
+                    <div class="newssummary">
+                        <h1 class="txt01" style="width: 996px;"><a href="@url" title="@item.Title" target="_blank">@item.Title)
+                        </a></h1>
+                        <span class="txt02">@item.InsertTime.ToString("yyyy-MM-dd")</span>
+                        <p class="txt03" style="width: 996px;">
+                            @item.Description
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+{
+    <div class="title-a mt10" id="2" name="2">
+        <h2>推荐图集</h2>
+    </div>
+    <div class="pic-list mb7">
+        <ul>
+            @foreach (var item in Model.AlbumResult)
+            {
+                string url = "/show/" + item.Id.ToString() + ".html";
+                
+                <li>
+                    <div class="picbox">
+                        <img data-original="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)"
+                    alt="@item.Title" width="235" height="350" />
+                        <div>
+                            <b><a target="_blank" href="@url"></a></b>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" href="@url"
+                    title="@item.Title">@item.Title</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+}
+
+@Html.Action("FriendlyLink", "Home")

@@ -1,0 +1,16 @@
+﻿@model WitBird.Sex.WebV2.Models.HomeModel
+@{
+    ViewBag.Title = WitBird.Sex.WebV2.Cache.WebConfig.Title + "，" + WitBird.Sex.WebV2.Cache.WebConfig.WebName;
+    ViewBag.Keywords = WitBird.Sex.WebV2.Cache.WebConfig.Keywords;
+    ViewBag.Description = WitBird.Sex.WebV2.Cache.WebConfig.Description;
+    ViewBag.MainTitle = WitBird.Sex.WebV2.Cache.WebConfig.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <style>
+        #home a, #home a:hover { background: url(/content/images/nav_a_h.png) repeat-x; width: 87px; height: 53px; color: #fff; }
+    </style>
+}
+
+@Html.Action("IndexDeferLoad", "Home")
