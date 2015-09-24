@@ -1,0 +1,14 @@
+﻿@if (WitBird.Sex.Web.Cache.FriendlyLinks != null && WitBird.Sex.Web.Cache.FriendlyLinks.Count > 0)
+{
+    <ul class="bs-docs-footer-links text-muted">
+        <li>友情链接</li>
+        @foreach (var item in WitBird.Sex.Web.Cache.FriendlyLinks)
+        {
+
+            <li>·</li>
+            <li><a  href="@item.Link" title="@item.Name" target='_blank'>@item.Name</a></li>
+        }
+    </ul>
+
+}
+<br />

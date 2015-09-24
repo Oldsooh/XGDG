@@ -1,0 +1,81 @@
+﻿@model WitBird.Sex.Web.Models.SearchModel
+@{
+    ViewBag.Title = "404，帅哥靓妹不在家_" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = "404，帅哥靓妹不在家";
+    ViewBag.Description = "404，帅哥靓妹不在家";
+    ViewBag.MainTitle = "404，帅哥靓妹不在家";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+    Response.Status = "404 Not Found";
+    Response.StatusCode = 404;
+}
+@section head
+{
+}
+<div class="title-a mt20">
+    <h2><span style="font-size: 50px; color: #FA4B6E;">404</span>
+        &nbsp;帅哥靓妹不在家, 不用担心, 我们为您精心推荐了一些<a href="#1">资讯</a>和<a href="#album">图集</a>，赶紧查看吧</h2>
+</div>
+@if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+{
+    <div id="news" class="row">
+        @if (Model.NewsResult != null && Model.NewsResult.Count > 0)
+        {
+            <div id="1" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-file"></i>&nbsp; 推荐资讯</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.NewsResult)
+                    {
+                        string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                        <div class="media md-jj">
+                            <div class="media-left media-middle hidden-xs">
+                                <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a href="@url">@item.Title</a>
+                                </h4>
+                                <p class="p">
+                                    @item.Description
+                                </p>
+                                <p>
+                                    <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                    <span><i class="fa fa-eye"></i>&nbsp;@item.ViewCount</span>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+{
+    <div class="row" id="album">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="glyphicon glyphicon-camera"></i>&nbsp; 推荐图集</h2>
+        </div>
+        @if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+        {
+            foreach (var item in Model.AlbumResult)
+            {
+                string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <img url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title">
+                    <div class="caption">
+                        <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                        <p class="hidden">
+                                        @item.Description
+                                    </p>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+    </div>
+
+}

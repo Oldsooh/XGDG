@@ -1,0 +1,65 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.CategoryModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>SEO设置</span>
+    </div>
+</div>
+
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+    <div class="result-content" style="min-height: 441px;">
+        <table class="result-tab" style="width: 800px;">
+            <tbody>
+                <tr>
+                    <th width="40">
+                        排序
+                    </th>
+                    <th width="80">
+                        唯一ID
+                    </th>
+                    <th width="100">
+                        名称
+                    </th>
+                    <th>
+                        标题
+                    </th>
+                    <th width="100">
+                        操作
+                    </th>
+                </tr>
+                @if (Model.Categories != null && Model.Categories.Count > 0)
+                {
+                    foreach (var item in Model.Categories)
+                    {
+                    <tr>
+                        <td>@item.OrderNumber
+                        </td>
+                        <td>@item.Id
+                        </td>
+                        <td>@item.Name
+                        </td>
+                        <td>@item.Title
+                        </td>
+                        <td>
+                            <a class="link-update" href="/admin/category/edit/@item.Id" >修改</a> 
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    </form>
+</div>
+
+
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>
+

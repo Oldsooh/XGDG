@@ -1,0 +1,49 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.AdvertisementModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">系统管理</a><span class="crumb-step">&gt;</span>
+        <span>广告设置</span>
+    </div>
+    <div class="result-wrap">
+        <form name="myform" id="myform" method="post">
+            <div class="result-content" style="min-height: 441px;">
+                <table class="result-tab" style="width: 500px;">
+                    <tbody>
+                        <tr>
+                            <th width="60">广告ID
+                            </th>
+                            <th width="300">
+                            名称
+                            <th>操作
+                            </th>
+                        </tr>
+                        @if (Model.Advertisements != null && Model.Advertisements.Count > 0)
+                        {
+                            foreach (var item in Model.Advertisements)
+                            {
+                            <tr>
+                                <td>@item.Id
+                                </td>
+                                <td>@item.Name
+                                <td>
+                                    <a class="link-del" href="/admin/advertisement/edit/@item.Id">编辑</a>
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_1"));
+</script>

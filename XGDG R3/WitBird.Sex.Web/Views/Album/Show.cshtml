@@ -1,0 +1,431 @@
+﻿@model WitBird.Sex.Web.Models.ImageModel
+@{
+    ViewBag.Title = Model.Album.Title + "_第" + Model.Page + "张_" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.Album.Keywords;
+    ViewBag.Description = Model.Album.Description;
+    ViewBag.MainTitle = Model.Album.Title + "_第" + Model.Page + "张";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <style>
+        .close-lg {
+            font-size: 30px;
+        }
+
+        #popupdialog .media-heading a {
+            width: 100%;
+        }
+    </style>
+}
+
+<!-- 面包屑 -->
+<ol class="breadcrumb hidden-xs">
+    <li>当前位置</li>
+    <li><a href="@Uitlity.WebHelper.GetPCPath("/")" title="返回首页">首页</a></li>
+    <li class="active">
+        <a href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/")" title="@Model.Category.Name">@Model.Category.Name</a>
+    </li>
+    <li>@(Model.Album.Title)</li>
+    <li>第@(Model.Page)张</li>
+</ol>
+
+<div id="content" class="row">
+    <div class="col-md-9">
+        <div id="js-comments-selecter">
+            <article class="post">
+                <section class="sm-tit hidden-xs">
+                    <h1>@Model.Album.Title</h1>
+                    <i class="fa fa-clock-o"></i>&nbsp;@Model.Album.InsertTime.ToString("yyyy-MM-dd hh:mm:ss")&nbsp;&nbsp;
+                <i class="fa fa-comment"></i>&nbsp;<a href="#ds-thread" title="查看评论"><span class="ds-thread-count" data-thread-key="/show/@Model.Album.Id" data-count-type="comments"></span></a>&nbsp;&nbsp;
+                <i class="fa fa-eye"></i>&nbsp;<span id="hits">@(Model.Album.ViewTime)次浏览</span>
+
+                    <i class="fa"></i>&nbsp;<span>支持 ← →键盘翻页</span>&nbsp;&nbsp;
+                <i class="fa"></i>&nbsp;<a href="@Uitlity.WebHelper.GetImagePath(Model.Image.UrlThumbnailHeight200)" target="_blank" title="点击查看高清原图">查看原图</a>&nbsp;&nbsp;
+
+                <i id="bdshare" class="bdshare_b" style="float: none;">
+                    <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=@(DateTime.Now)" style="float:none;" />
+                </i>
+                </section>
+                <section id="contes" class="contes carousel-inner">
+                    @{
+                        var imgUrl = Model.Image.UrlOriginal;
+                        if (Model.Page == Model.Images.Count)
+                        {
+                        <a href="javascript:showPopUpDialog();">
+                            <img src="@Uitlity.WebHelper.GetImagePath(imgUrl)" class="img-responsive center-block img-thumbnail" alt="@Model.Album.Title">
+                        </a>
+                        }
+                        else
+                        {
+                            var nextPageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + Model.Album.Id + "-" + (Model.Page + 1) + ".html");
+                    
+                        <img url="@nextPageUrl" src="@Uitlity.WebHelper.GetImagePath(imgUrl)" class="img-responsive center-block img-thumbnail" alt="@Model.Album.Title" title="点击图片浏览下一页">
+                            if (Model.Page < Model.Images.Count)
+                            {
+                        <input type="hidden" id="#nextImgUrl" value="@Model.Images[Model.Page].UrlOriginal">
+                            }
+                        }
+                        <br>
+                    }
+                </section>
+
+                <section class="sm-tit hidden-sm hidden-md hidden-lg">
+                    <h3>@Model.Album.Title</h3>
+                    <i id="bdshare" class="bdshare_b" style="float: none;">
+                        <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=@(DateTime.Now)" style="float:none;" />
+                    </i>
+                </section>
+                <section class="sm-tit hidden-xs">
+                    <p style="font-size: 15px;">@Model.Album.Description</p>
+                </section>
+                <div class="pages">
+                    @if (Model.LastAlbum != null)
+                    {
+                        <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.LastAlbum.CategoryId + "/" + Model.LastAlbum.Id + ".html")" title="@Model.LastAlbum.Title">上一图集</a>
+                        <p class="hidden">@Model.LastAlbum.Description</p>
+                    }
+                    @if (Model.Images.Count > 1)
+                    {
+                        var pageStep = 10;
+                        for (int step = 1; step <= Model.Images.Count; step = step + pageStep)
+                        {
+                            if (Model.Page >= step && Model.Page < step + pageStep)
+                            {
+                                //首页
+                                if (pageStep < Model.Page)
+                                {
+                                    var firstPageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + ".html");
+                        <a class="btn btn-default" href="@firstPageUrl" title="@(Model.Album.Title)_第1张">首页</a>
+                                }
+                                //上一页
+                                if (Model.Page > 1)
+                                {
+                                    var prePageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + "-" + (Model.Page - 1) + ".html");
+                        <a id="prePage" class="btn btn-default" href="@prePageUrl" title="@(Model.Album.Title)_上一张">上一页</a>
+                                }
+                                //分页
+                                for (int i = step; i < step + pageStep; i++)
+                                {
+                                    if (i <= Model.Images.Count)
+                                    {
+                                        if (i == Model.Page)
+                                        {
+                        <span class="btn btn-danger">@i</span>
+                                        }
+                                        else
+                                        {
+                                            var pageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + "-" + i + ".html");
+                        <a href="@pageUrl" class="btn btn-default"  title="@(Model.Album.Title)_第@(i)张">@i<span class="hidden">@(Model.Album.Title)_第@(i)张</span></a>
+                                        }
+                                    }
+                                }
+                                //下一页
+                                if (Model.Page < Model.Images.Count)
+                                {
+                                    var nextPageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + "-" + (Model.Page + 1) + ".html");
+                        <a id="nextPage" class="btn btn-default" href="@nextPageUrl" title="@(Model.Album.Title)_下一张">下一页</a>
+                                }
+                                else
+                                {
+                        <a id="nextPage" class="btn btn-default" href="javascript:showPopUpDialog();">下一页</a>
+                                }
+                                //末页
+                                if (step + pageStep <= Model.Images.Count)
+                                {
+                                    var lastPageUrl = Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + "-" + Model.Images.Count + ".html");
+                        <a class="btn btn-default" href="@lastPageUrl"  title="@(Model.Album.Title)_第@(Model.Images.Count)张">末页</a>
+                                }
+                            }
+                        }
+                    }
+                    @if (Model.NextAlbum != null)
+                    {
+                        <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.NextAlbum.CategoryId + "/" + Model.NextAlbum.Id + ".html")" title="@Model.NextAlbum.Title">下一图集</a>
+                        <p class="hidden">@Model.NextAlbum.Description</p>
+                    }
+
+                </div>
+
+            </article>
+            <!-- 评论 -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="fl-tit clearfix">
+                    <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 猜你喜欢</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+            {
+                foreach (var item in Model.RelatedAlbum)
+                {
+                    string url = Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + item.Id + ".html");
+                <div class="col-xs-6 col-md-4 col-lg-3">
+                    <div class="thumbnail">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title" title="@item.Title" url="@url">
+                        <div class="caption">
+                            <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                            <p class="hidden">
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <aside>
+            @Html.Action("HotKeywords", "News")
+            @if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+            {
+                <div class="panel panel-default hidden-xs">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp; 推荐图集</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.RecommendAlbum)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                            <div class="media md-jj">
+                                <div class="media-left media-middle">
+                                    <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth102x102)" alt="@item.Title">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p>
+                                        分类：<a href="@Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/")" title="更多@(Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId))图集">
+                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                                    </p>
+                                    <p class="hidden">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (Model.RelatedNews != null && Model.RelatedNews.Count > 0)
+            {
+                <div class="panel panel-default hidden-xs">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-thumbs-o-up"></i>&nbsp; 相关资讯</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.RelatedNews)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                            <div class="media md-jj">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p class="hidden">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            }
+        </aside>
+    </div>
+</div>
+<div>
+</div>
+<!-- 最后一页加载弹出窗内容 -->
+@if (Model.Page == Model.Images.Count)
+{
+    <div class="modal fade" id="popupdialog" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-lg"
+                        data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <a href="@Uitlity.WebHelper.GetPCPath("/" + Model.Album.CategoryId + "/" + Model.Album.Id + ".html")" title="重新浏览当前图集"><i class="glyphicon glyphicon-repeat"></i>&nbsp;重新浏览</a>
+                        @if (Model.LastAlbum != null)
+                        {
+                            @(new HtmlString("&nbsp;&nbsp;"))
+                            <a href="@Uitlity.WebHelper.GetPCPath("/" + Model.LastAlbum.CategoryId + "/" + Model.LastAlbum.Id + ".html")" title="@Model.LastAlbum.Title"><i class="glyphicon glyphicon-fast-backward"></i>&nbsp;上一图集</a>
+                        }
+                        @if (Model.NextAlbum != null)
+                        {
+                            @(new HtmlString("&nbsp;&nbsp;"))
+                            <a href="@Uitlity.WebHelper.GetPCPath("/" + Model.NextAlbum.CategoryId + "/" + Model.NextAlbum.Id + ".html")" title="@Model.NextAlbum.Title"><i class="glyphicon glyphicon-fast-forward"></i>&nbsp;下一图集</a>
+                        }
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="js-tabs-selector nav nav-tabs">
+                        <li class="active"><a href="#recommend">推荐图集</a></li>
+                        @if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+                        {
+                            <li class=""><a href="#like">猜你喜欢</a></li>
+                        }
+                        @if (Model.RelatedNews != null && Model.RelatedNews.Count > 0)
+                        {
+                            <li class=""><a href="#relatedNews">相关资讯</a></li>
+                        }
+                    </ul>
+
+                    <div class="tab-content">
+                        @if (Model.RecommendAlbum != null && Model.RecommendAlbum.Count > 0)
+                        {
+                            var maxCount = 5;
+                            <div class="tab-pane active" id="recommend">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        @foreach (var item in Model.RecommendAlbum)
+                                        {
+                                            if (maxCount < 1)
+                                            {
+                                                break;
+                                            }
+                                            maxCount--;
+                                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                                            <div class="media md-jj">
+                                                <div class="media-left media-middle">
+                                                    <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth102x102)" alt="@item.Title">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">
+                                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                                    </h4>
+                                                    <p>
+                                                        分类：<a href="@Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/")" title="更多@(Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId))图集">
+                                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                                        </a>
+                                                    </p>
+                                                    <p>
+                                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                                                    </p>
+                                                    <p class="hidden">
+                                                        @item.Description
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+                        {
+                            var maxCount = 5;
+                            <div class="tab-pane" id="like">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        @foreach (var item in Model.RelatedAlbum)
+                                        {
+                                            if (maxCount < 1)
+                                            {
+                                                break;
+                                            }
+                                            maxCount--;
+                                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                                            <div class="media md-jj">
+                                                <div class="media-left media-middle">
+                                                    <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth102x102)" alt="@item.Title">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">
+                                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                                    </h4>
+                                                    <p>
+                                                        分类：<a href="@Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/")" title="更多@(Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId))图集">
+                                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                                        </a>
+                                                    </p>
+                                                    <p>
+                                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>
+                                                        &nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewTime</span>
+                                                    </p>
+                                                    <p class="hidden">
+                                                        @item.Description
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (Model.RelatedNews != null && Model.RelatedNews.Count > 0)
+                        {
+                            var maxCount = 5;
+                            <div class="tab-pane" id="relatedNews">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        @foreach (var item in Model.RelatedNews)
+                                        {
+                                            if (maxCount < 1)
+                                            {
+                                                break;
+                                            }
+                                            maxCount--;
+                                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                                            <div class="media md-jj">
+                                                <div class="media-left media-middle">
+                                                    <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">
+                                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                                    </h4>
+                                                    <p>
+                                                        分类：<a href="@Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/")" title="更多@(Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId))新闻">
+                                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                                        </a>
+                                                    </p>
+                                                    <p>
+                                                        <span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewCount</span>
+                                                    </p>
+                                                    <p class="hidden">
+                                                        @item.Description
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section foot{
+    <script id="bdshare_js" data="type=button&uid=0"></script>
+    <script id="bdshell_js"></script>
+    <script src="http://static.duoshuo.com/embed.js"></script>
+    <script src="/Content/script/album.js"></script>
+
+}

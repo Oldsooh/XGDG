@@ -1,0 +1,105 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.ImagesModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <link href="/Areas/Admin/Content/swfupload/css.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.queue.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.speed.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/fileprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/filegroupprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/handlers.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/uploadimages2.js"></script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">图片管理</a><span class="crumb-step">&gt;</span><span>修改专辑</span>
+    </div>
+</div>
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="/admin/image/edit" method="post" id="addform" name="myform" enctype="multipart/form-data">
+            <input type="hidden" id="id" name="id" value="@Model.Album.Id" />
+            <table class="insert-tab" width="100%">
+                <tbody>
+                    <tr>
+                        <th width="120">
+                            <i class="require-red">*</i>分类：
+                        </th>
+                        <td>
+                            <select name="c" id="c" class="CategoryId" style="min-width: 80px;">
+                                @if (Model.Categories != null && Model.Categories.Count > 0)
+                                {
+                                    foreach (var item in Model.Categories)
+                                    {
+                                        if (item.Id == Model.Album.CategoryId)
+                                        {
+                                    <option value="@item.Id" selected="selected">@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                    <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="">请选择</option>
+                                }
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                        显示
+                            @{
+                                var isshowchecked = Model.Album.IsShow ? "checked" : "";
+                                var istopchecked = Model.Album.IsTop ? "checked" : "";
+                                
+                                <input type="checkbox" name="isShow" @isshowchecked />
+                                                                                                                 
+                                <span>&nbsp;&nbsp;&nbsp;推荐</span>
+                                <input type="checkbox" name="isTop" @istopchecked />
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>标题：
+                        </th>
+                        <td>
+                            <input class="common-text required" id="t" name="t" style="width: 700px;"
+                                value="@Model.Album.Title" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>关键字：
+                        </th>
+                        <td>
+                            <input class="common-text" id="k" name="k" style="width: 700px;" value="@Model.Album.Keywords"
+                                type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述：
+                        </th>
+                        <td>
+                            <textarea id="d" name="d" class="common-text" rows="3" style="width: 700px; height: 100px; line-height: 20px; padding: 5px 4px; margin-top: 8px;"
+                                maxlength="3000">@Model.Album.Description</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提 交" type="submit" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_2"));
+</script>

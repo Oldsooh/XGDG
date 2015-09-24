@@ -1,0 +1,51 @@
+﻿@model WitBird.Sex.Web.Models.NewsRightModel
+
+@if (Model.RecommendNews != null && Model.RecommendNews.Count > 0)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp; 推荐资讯</h3>
+        </div>
+        <div class="panel-body">
+            @foreach (var item in Model.RecommendNews)
+            {
+                string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                <div class="media md-jj">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="@url" title="@item.Title">@item.Title</a>
+                        </h4>
+                        <p class="hidden">
+                            @item.Description
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@if (Model.TopNews != null && Model.TopNews.Count > 0)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp; 一周排行</h3>
+        </div>
+        <div class="panel-body">
+            @foreach (var item in Model.TopNews)
+            {
+                string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                <div class="media md-jj">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="@url" title="@item.Title">@item.Title</a>
+                        </h4>
+                        <p class="hidden">
+                            @item.Description
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

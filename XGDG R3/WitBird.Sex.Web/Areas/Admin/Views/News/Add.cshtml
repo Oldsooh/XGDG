@@ -1,0 +1,230 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.NewsModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <script src="/Areas/Admin/Content/upload/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="/Areas/Admin/Content/upload/jquery.form.js" type="text/javascript"></script>
+    <script src="/Areas/Admin/Content/upload/uploadimage.js" type="text/javascript"></script>
+
+    <link href="/Areas/Admin/Content/swfupload/css.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.queue.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.speed.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/fileprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/filegroupprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/handlers.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/uploadimages.js"></script>
+
+    <link href="/Areas/Admin/Content/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="/Areas/Admin/Content/kindeditor/kindeditor-min.js"></script>
+    <script src="/Areas/Admin/Content/kindeditor/zh_CN.js"></script>
+    <script type="text/javascript">
+        var editorContent; //定义编辑器
+        KindEditor.ready(function (K) {
+            editorContent = K.create('#editorContent', {
+                width: '880px',
+                height: '600px',
+                resizeType: 1,
+                allowPreviewEmoticons: false,
+                allowImageUpload: true,
+                allowFileManager: true,
+                fillDescAfterUploadImage: true,
+                uploadJson: '/Areas/Admin/content/kindeditor/asp.net/uploadnews.ashx',
+                fileManagerJson: '/Areas/Admin/content/kindeditor/asp.net/file_manager_news.ashx',
+                items: [
+                    'source', 'fontname', 'fontsize', 'lineheight', '|', 'undo', 'redo', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'emoticons', 'image', 'multiimage', 'link']
+            });
+        });
+        function addNews() {
+            $("#editorContent").val(editorContent.html()); //把编辑器的内空复制到 textarea 标签
+            $.ajax({
+                url: '/admin/news/add',
+                data: $("#addform").serialize(),
+                type: 'POST',
+                success: function (msg) {
+                    if (msg == "success") {
+                        alert("发布成功");
+                        window.location.href = "/admin/news/index";
+                    }
+                    else {
+                        alert(msg);
+                    }
+                },
+                error: function (msg) {
+                    alert("网络异常，添加失败");
+                }
+            });
+        }
+    </script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="/admin/news/index">新闻管理</a><span class="crumb-step">&gt;</span><span>发布新闻</span></div>
+</div>
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="/admin/news/add" method="post" id="addform" name="myform" enctype="multipart/form-data">
+        <table class="insert-tab" width="100%">
+            <tbody>
+                <tr>
+                    <th width="120">
+                        <i class="require-red">*</i>分类：
+                    </th>
+                    <td>
+                        <select name="CategoryId" id="CategoryId" class="CategoryId" style="min-width: 80px;">
+                            @if (Model.NewsCategories != null && Model.NewsCategories.Count > 0)
+                            {
+                                foreach (var item in Model.NewsCategories)
+                                {
+                                <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">请选择</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red">*</i>标题：
+                    </th>
+                    <td>
+                        <input class="common-text required" id="Title" name="Title" style="width: 700px;"
+                            value="" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        关键字：
+                    </th>
+                    <td>
+                        <input class="common-text" id="Keywords" name="Keywords" style="width: 700px;" value=""
+                            type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        描述：
+                    </th>
+                    <td>
+                        <textarea id="Description" name="Description" class="common-text" rows="3" style="width: 700px;
+                            height: 60px; line-height: 20px; padding: 5px 4px; margin-top: 8px;" maxlength="300"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">
+                        发布：
+                    </th>
+                    <td>
+                        <select name="PostType" id="PostType" class="required" style="width: 80px;">
+                            <option value="原创">原创</option>
+                            <option value="转载">转载</option>
+                            <option value="投稿">投稿</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        属性：
+                    </th>
+                    <td>
+                        <input name="IsRecommend" value="true" type="checkbox">
+                        推荐 &nbsp;&nbsp;
+                        <input name="IsTop" value="true" type="checkbox">
+                        置顶 &nbsp;&nbsp;
+                        <input name="IsSlide" value="true" type="checkbox">
+                        幻灯片
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        作者：
+                    </th>
+                    <td>
+                        <input class="common-text" name="Author" style="width: 400px;" value="" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        来源：
+                    </th>
+                    <td>
+                        <input class="common-text" name="ComeFrom" style="width: 400px;" value="" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        封面：
+                    </th>
+                    <td>
+                        <input class="common-text" name="Cover" style="width: 400px;" value="" type="text"
+                            id="cover" onclick="uploadimage(this)" url="/Areas/Admin/content/upload/uploadimage300200.ashx">
+                        点击上传，最佳尺寸300*200
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        图组：
+                    </th>
+                    <td>
+                        <textarea id="PictureGroup" name="PictureGroup" class="common-text" rows="3" style="width: 370px;
+                            height: 100px; padding: 5px; padding-right:20px; margin: 8px 0; float: left;"
+                            maxlength="3000" onclick="showGroupDiv()"></textarea>
+                        <div style="width: 400px; float: left; padding-top: 8px; line-height: 18px; font-size:12px;">
+                            &nbsp;&nbsp; 点击上传<br />
+                            &nbsp;&nbsp; 按住 “Ctrl” 键，用鼠标选择多张图片<br />
+                            &nbsp;&nbsp; 点击 “打开(O)” 批量上传<br />
+                            &nbsp;&nbsp; 注意：如果要幻灯展示，第一张图片最佳尺寸600*300
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <i class="require-red">*</i>内容：
+                    </th>
+                    <td style="padding: 10px;">
+                        <textarea name="ContentStyle" class="common-textarea" id="editorContent" cols="30" rows="30"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                    <td>
+                        <input class="btn btn-primary btn6 mr10" value="提交" type="button" onclick="addNews()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+<div id="GroupDiv" style="position: fixed; z-index: 10001; overflow: hidden; left: 50%;
+    top: 50%; width: 500px; height: 500px; margin-left: -160px; margin-top: -250px;
+    border: 3px solid rgb(158, 190, 255); background-color: rgb(245, 253, 253); display: none;">
+    <div style="width: 30px; height: 30px; float: right;">
+        <div onclick="closeGroupDiv()" style="width: 30px; height: 30px; font-size: 26px;
+            color: rgb(255, 255, 255); text-align: center; line-height: 30px; cursor: pointer;
+            background-color: rgb(158, 190, 255);">
+            X
+        </div>
+    </div>
+    <form id="frmMain" action="/Areas/Admin/Content/swfupload/upload.ashx" runat="server" enctype="multipart/form-data">
+    <span id="spanButtonPlaceHolder"></span>
+    <div id="divprogresscontainer">
+    </div>
+    <div id="divprogressGroup">
+    </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_3"));
+</script>

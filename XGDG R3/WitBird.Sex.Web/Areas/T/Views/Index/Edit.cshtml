@@ -1,0 +1,98 @@
+@model WitBird.Sex.Web.Areas.T.Models.ImagesModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>更新图集</title>
+    <link rel="stylesheet"
+          href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <form action="/t/index/edit" method="post" id="addform" name="myform"
+          enctype="multipart/form-data">
+        <input type="hidden" id="id" name="id" value="@Model.Album.Id" />
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="c" id="c" style="">
+                            @if (Model.Categories != null && Model.Categories.Count > 0)
+                            {
+                            foreach (var item in Model.Categories)
+                            {
+                            if (item.Id == Model.Album.CategoryId)
+                            {
+                            <option value="@item.Id"
+                                    selected="selected">
+                                @item.Name
+                            </option>
+                            }
+                            else
+                            {
+                            <option value="@item.Id">@item.Name</option>
+                            }
+                            }
+                            }
+                            else
+                            {
+                            <option value="">---</option>
+                            }
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                        @{
+                        var isshowchecked = Model.Album.IsShow ? "checked" : "";
+                        var istopchecked = Model.Album.IsTop ? "checked" : "";
+
+                        <label>
+                            <input type="checkbox" name="isShow" @isshowchecked />显示
+                        </label>
+
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <label>
+                            <input type="checkbox" name="isTop" @istopchecked />推荐
+                        </label>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="common-text required" id="t" name="t"
+                               style="width:100%;"
+                               value="@Model.Album.Title" type="text" placeholder="标题">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="common-text" id="k" name="k" style="width: 100%;"
+                               value="@Model.Album.Keywords"
+                               type="text" placeholder="关键字">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="d" name="d" rows="10" style="width: 100%;
+
+height:auto; padding: 2px;text-align:left;"
+                                  maxlength="3000" placeholder="描述">
+                            @Model.Album.Description
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">
+                        <input class="btn btn-primary btn6 mr10" value="提 交"
+                               type="submit" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="javascript:history.go(-1);">返回</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

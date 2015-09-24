@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@WitBird.Sex.Web.Cache.WebConfig.WebName 管理中心</title>
+    <link rel="stylesheet" type="text/css" href="/areas/admin/content/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/areas/admin/content/css/main.css" />
+    <script type="text/javascript" src="/areas/admin/content/js/libs/modernizr.min.js"></script>
+    @RenderSection("head", false)
+    <script type="text/javascript">
+        function ShowMenuItem(menu) {
+            var menusId = menu.id;
+            var count = 5;
+            for (var i = 1; i <= count; i++) {
+                if ("menu_" + i == menusId) {
+                    document.getElementById("menu_" + i + "_ul").style.display = "block";
+                }
+                else {
+                    document.getElementById("menu_" + i + "_ul").style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="topbar-wrap white">
+        <div class="topbar-inner clearfix" style="padding-left: 0;">
+            <div class="topbar-logo-wrap clearfix">
+                <h1 class="topbar-logo none"><a href="#" class="navbar-brand">后台管理</a></h1>
+                <ul class="navbar-list clearfix">
+                    <li><a class="on" href="/admin/">管理首页</a></li>
+                </ul>
+            </div>
+            <div class="top-info-wrap">
+                <ul class="top-info-list clearfix">
+                    <li><a href="/" target="_blank">网站首页</a></li>
+                    <li><a href="/admin/login/logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container clearfix">
+        <div class="sidebar-wrap">
+            <div class="sidebar-title">
+                <h1>菜单</h1>
+            </div>
+            <div class="sidebar-content">
+                <ul class="sidebar-list">
+                    <li onclick="ShowMenuItem(this)" id="menu_1">
+                        <a href="javasctipt:void(0)"><i class="icon-font">&#xe018;</i>系统管理</a>
+                        <ul class="sub-menu" id="menu_1_ul">
+                            <li><a href="/admin/webconfig/"><i class="icon-font">&#xe017;</i>系统设置</a></li>
+                            <li><a href="/admin/category/"><i class="icon-font">&#xe01a;</i>SEO设置</a></li>
+                            <li><a href="/admin/slide/"><i class="icon-font">&#xe029;</i>幻灯设置</a></li>
+                            <li><a href="/admin/friendlylink/"><i class="icon-font">&#xe052;</i>友情链接</a></li>
+                            <li><a href="/admin/advertisement/"><i class="icon-font">&#xe043;</i>广告设置</a></li>
+                            <li><a href="/admin/sitemap/"><i class="icon-font">&#xe014;</i>网站地图</a></li>
+                        </ul>
+                    </li>
+                    <li onclick="ShowMenuItem(this)" id="menu_2">
+                        <a href="javasctipt:void(0)"><i class="icon-font">&#xe033;</i>图片管理</a>
+                        <ul class="sub-menu" id="menu_2_ul">
+                            <li><a href="/admin/image/upload"><i class="icon-font">&#xe026;</i>上传专辑</a></li>
+                            <li><a href="/admin/image/index?isShow=0"><i class="icon-font">&#xe041;</i>草稿箱</a></li>
+                            <li><a href="/admin/image/index"><i class="icon-font">&#xe041;</i>专辑列表</a></li>
+                        </ul>
+                    </li>
+                    <li onclick="ShowMenuItem(this)" id="menu_3">
+                        <a href="javasctipt:void(0)"><i class="icon-font">&#xe048;</i>新闻管理</a>
+                        <ul class="sub-menu" id="menu_3_ul">
+                            <li><a href="/admin/news/category"><i class="icon-font">&#xe006;</i>分类设置</a></li>
+                            <li><a href="/admin/news/add"><i class="icon-font">&#xe026;</i>发布新闻</a></li>
+                            <li><a href="/admin/news/index"><i class="icon-font">&#xe041;</i>新闻列表</a></li>
+                        </ul>
+                    </li>
+                    <li onclick="ShowMenuItem(this)" id="menu_4">
+                        <a href="javasctipt:void(0)"><i class="icon-font">&#xe049;</i>小说管理</a>
+                        <ul class="sub-menu" id="menu_4_ul">
+                            <li><a href="/admin/novel/category"><i class="icon-font">&#xe006;</i>分类设置</a></li>
+                            <li><a href="/admin/novel/add"><i class="icon-font">&#xe026;</i>发布小说</a></li>
+                            <li><a href="/admin/novel/index"><i class="icon-font">&#xe041;</i>小说列表</a></li>
+                        </ul>
+                    </li>
+                    <li onclick="ShowMenuItem(this)" id="menu_5">
+                        <a href="javasctipt:void(0)"><i class="icon-font">&#xe044;</i>视频管理</a>
+                        <ul class="sub-menu" id="menu_5_ul">
+                            <li><a href="/admin/video/add"><i class="icon-font">&#xe026;</i>发布视频</a></li>
+                            <li><a href="/admin/video/index"><i class="icon-font">&#xe041;</i>视频列表</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/sidebar-->
+        <div class="main-wrap">
+            @RenderBody()
+        </div>
+        <!--/main-->
+    </div>
+</body>
+</html>

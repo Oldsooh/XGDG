@@ -1,0 +1,143 @@
+﻿@model WitBird.Sex.Web.Areas.Admin.Models.UploadModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section head
+{
+    <link href="/Areas/Admin/Content/swfupload/css.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.queue.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/swfupload.speed.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/fileprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/filegroupprogress.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/handlers.js"></script>
+    <script type="text/javascript" src="/Areas/Admin/Content/swfupload/js/uploadimages2.js"></script>
+    <script type="text/javascript">
+        function selectPic() {
+            document.getElementById("isSuccessful").innerHTML = "";
+            showGroupDiv();
+        }
+    </script>
+}
+<div class="crumb-wrap">
+    <div class="crumb-list">
+        <i class="icon-font"></i><a href="/admin/">后台首页</a><span class="crumb-step">&gt;</span>
+        <a class="crumb-name" href="javascript:void(0)">图片管理</a><span class="crumb-step">&gt;</span><span>上传专辑</span>
+    </div>
+</div>
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="/admin/image/upload" method="post" id="addform" name="myform" enctype="multipart/form-data">
+            <table class="insert-tab" width="100%">
+                <tbody>
+                    <tr>
+                        <th width="120">
+                            <i class="require-red">*</i>分类：
+                        </th>
+                        <td>
+                            <select name="c" id="c" class="CategoryId" style="min-width: 80px;">
+                                @if (Model.CategoryList != null && Model.CategoryList.Count > 0)
+                                {
+                                    foreach (var item in Model.CategoryList)
+                                    {
+                                        if (item.Id == Model.SelectedCategory)
+                                        {
+                                    <option value="@item.Id" selected="selected">@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                    <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="">请选择</option>
+                                }
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                        显示
+                            <input type="checkbox" name="isShow" value="true" checked="checked" />&nbsp;&nbsp;&nbsp;
+                        推荐
+                            <input type="checkbox" name="isTop" value="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="require-red">*</i>标题：
+                        </th>
+                        <td>
+                            <input class="common-text required" id="t" name="t" style="width: 700px;"
+                                value="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>关键字：
+                        </th>
+                        <td>
+                            <input class="common-text" id="k" name="k" style="width: 700px;" value=""
+                                type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述：
+                        </th>
+                        <td>
+                            <textarea id="d" name="d" class="common-text" rows="3" style="width: 700px; height: 100px; line-height: 20px; padding: 5px 4px; margin-top: 8px;"
+                                maxlength="3000"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>图组：
+                        </th>
+                        <td>
+                            <textarea id="PictureGroup" name="urls" class="common-text" rows="3" style="width: 370px; height: 200px; padding: 5px; padding-right: 20px; margin: 8px 0; float: left;"
+                                maxlength="3000"></textarea>
+                            <div style="width: 400px; float: left; padding-top: 8px; line-height: 18px; font-size: 12px;">
+                                &nbsp;&nbsp; 点击上传<br />
+                                &nbsp;&nbsp; 按住 “Ctrl” 键，用鼠标选择多张图片<br />
+                                &nbsp;&nbsp; 点击 “打开(O)” 批量上传<br />
+                                <br /><br />
+                                &nbsp;&nbsp;<input type="button" value="选择图片" onclick="selectPic()" /><br />
+                                <br /><br />
+                                &nbsp;&nbsp; 
+                        @if (!string.IsNullOrEmpty(Model.isSuccessful))
+                        {
+                            <span id="isSuccessful" style="color: #ff0000; font-size: 20px;">@Model.isSuccessful &nbsp;&nbsp;  @DateTime.Now.ToString("HH:mm:ss")</span> 
+                        }
+                        else
+                        {
+                            <span id="isSuccessful" style="color: #ff0000; font-size: 20px;"></span> 
+                        }
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提 交" type="submit" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<div id="GroupDiv" style="position: fixed; z-index: 10001; overflow: hidden; left: 50%; top: 50%; width: 500px; height: 500px; margin-left: -160px; margin-top: -250px; border: 3px solid rgb(158, 190, 255); background-color: rgb(245, 253, 253); display: none;">
+    <div style="width: 30px; height: 30px; float: right;">
+        <div onclick="closeGroupDiv()" style="width: 30px; height: 30px; font-size: 26px; color: rgb(255, 255, 255); text-align: center; line-height: 30px; cursor: pointer; background-color: rgb(158, 190, 255);">
+            X
+        </div>
+    </div>
+    <form id="frmMain" action="/Areas/Admin/Content/swfupload/uploadAlbumImages.ashx" runat="server" enctype="multipart/form-data">
+        <span id="spanButtonPlaceHolder"></span>
+        <div id="divprogresscontainer">
+        </div>
+        <div id="divprogressGroup">
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    ShowMenuItem(document.getElementById("menu_2"));
+</script>

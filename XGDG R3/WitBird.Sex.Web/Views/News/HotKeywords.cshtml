@@ -1,0 +1,21 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp; 标签索引</h3>
+    </div>
+    <div class="panel-body tags">
+        @if (!string.IsNullOrEmpty(WitBird.Sex.Web.Cache.WebConfig.Tags) && WitBird.Sex.Web.Cache.WebConfig.Tags.Contains("+"))
+        {
+            string[] tags = WitBird.Sex.Web.Cache.WebConfig.Tags.Split('+');
+            if (tags != null && tags.Count() > 0)
+            {
+                foreach (var tag in tags)
+                {
+                    if (!string.IsNullOrEmpty(tag))
+                    {
+            <a href="@Uitlity.WebHelper.GetPCPath("/search/" + tag + "/")" title="查看更多@(tag)的图集">@tag</a>
+                    }
+                }
+            }
+        }
+    </div>
+</div>

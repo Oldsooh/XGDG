@@ -1,0 +1,171 @@
+﻿@model WitBird.Sex.Web.Models.HomeModel
+
+<!-- 焦点图 -->
+<div class="row tops">
+    <div class="col-md-9">
+        <div class="focus">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- 小点导航 -->
+                <ol class="carousel-indicators  hidden-xs hidden-sm">
+                    @if (Model.Slides != null && Model.Slides.Count > 0)
+                    {
+                        for (int i = 0; i < Model.Slides.Count; i++)
+                        {
+                            var isActive = i == 0 ? "active" : "";
+                        <li data-target="#carousel-example-generic" data-slide-to="@i" class="@isActive"></li>
+                        }
+                    }
+                </ol>
+                <!-- 正文图片 -->
+                <div class="carousel-inner" role="listbox">
+                    @if (Model.Slides != null && Model.Slides.Count > 0)
+                    {
+                        for (int i = 0; i < Model.Slides.Count; i++)
+                        {
+                            var isActive = i == 0 ? "active" : "";
+                            var item = Model.Slides[i];
+                        <div class="item @isActive" title="@item.Title">
+                            <img url="@item.Url" src="@Uitlity.WebHelper.GetImagePath(item.Image)" alt="@item.Title">
+                            <div class="carousel-caption">
+                                <a href="@item.Url" title="@item.Title">@item.Title</a>
+                            </div>
+                        </div>
+                        }
+                    }
+                </div>
+                <!-- 左右控制 -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                    data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">上一页</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                    data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">下一页</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最新上传 -->
+    <div class="col-md-3">
+        <aside>
+            @if (Model.NewUploads != null && Model.NewUploads.Count > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-upload"></i>&nbsp; 最新上传</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.NewUploads)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+
+                            <div class="media md-jj">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p class="hidden">@item.Description</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </aside>
+    </div>
+
+</div>
+<!-- 大咪咪 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 大咪咪美女</h2>
+            <span class="fr">
+                <a href="@Uitlity.WebHelper.GetPCPath("/damimi/")" title="更多大咪咪美女图集">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendDamimi != null && Model.RecommendDamimi.Count > 0)
+    {
+        foreach (var item in Model.RecommendDamimi)
+        {
+            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="thumbnail">
+                <img url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title" title="@item.Title">
+                <div class="caption">
+                    <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                    <p class="hidden">@item.Description</p>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
+<!-- 大屁股 -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 性感大屁股</h2>
+            <span class="fr">
+                <a href="@Uitlity.WebHelper.GetPCPath("/dapigu/")" title="更多性感大屁股美女图集">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendDapigu != null && Model.RecommendDapigu.Count > 0)
+    {
+        foreach (var item in Model.RecommendDapigu)
+        {
+            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="thumbnail">
+                <img url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title" title="@item.Title">
+                <div class="caption">
+                    <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                    <p class="hidden">@item.Description</p>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
+
+<!-- nenmeimei -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="fl-tit clearfix">
+            <h2 class="fl"><i class="fa fa-camera"></i>&nbsp; 清纯嫩妹妹</h2>
+            <span class="fr">
+                <a href="@Uitlity.WebHelper.GetPCPath("/nenmeimei/")" title="更多清纯嫩妹妹图集">更多...</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.RecommendNenmeimei != null && Model.RecommendNenmeimei.Count > 0)
+    {
+        foreach (var item in Model.RecommendNenmeimei)
+        {
+            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="thumbnail">
+                <img url="@url" src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth235x350)" alt="@item.Title" title="@item.Title">
+                <div class="caption">
+                    <h2><a href="@url" title="@item.Title">@item.Title</a></h2>
+                    <p class="hidden">@item.Description</p>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>

@@ -1,0 +1,119 @@
+﻿@model WitBird.Sex.Web.Models.NewsModel
+@{
+    ViewBag.Title = Model.Category.Name + "_第" + Model.PageIndex + "页_" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.Category.Keywords;
+    ViewBag.Description = Model.Category.Description;
+    ViewBag.MainTitle = Model.Category.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <link href="/content/style/bootstrap-responsive.css" rel="stylesheet" />
+}
+
+<!-- 面包屑 -->
+<ol class="breadcrumb hidden-xs">
+    <li>当前位置</li>
+    <li><a href="@Uitlity.WebHelper.GetPCPath("/")" title="返回首页">首页</a></li>
+
+    @if (Model.Category.Id != "news")
+    {
+        <li><a href="@Uitlity.WebHelper.GetPCPath("/news/")" title="@Uitlity.WebHelper.GetCatogoryNameById("news")">@Uitlity.WebHelper.GetCatogoryNameById("news")</a></li>
+    }
+    <li class="active"><a href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/")" title="@Model.Category.Name">@Model.Category.Name</a> </li>
+    <li>第@(Model.PageIndex)页</li>
+</ol>
+
+<!-- 缩略图 -->
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div id="news" class="span9">
+            @if (Model.NewsList != null && Model.NewsList.Count > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @foreach (var item in Model.NewsList)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                            <div class="media md-jj">
+                                <div class="media-left media-middle hidden-xs">
+                                    <img class="media-object" url="@url" src="@Uitlity.WebHelper.GetImagePath(item.Cover)" alt="@item.Title" title="@item.Title">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p class="p">
+                                        @item.Description
+                                    </p>
+                                    <p>
+                                        分类：<a href="@Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/")" title="更多@(Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId))新闻">
+                                            @Uitlity.WebHelper.GetCatogoryNameById(item.CategoryId)
+                                        </a>
+                                        &nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;@item.InsertTime.ToString("yyyy-MM-dd")</span>&nbsp;&nbsp;
+                                        <span><i class="fa fa-eye"></i>&nbsp;@item.ViewCount</span>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            <!-- 分页 -->
+            <div class="pages">
+                @if (Model.PageCount > 1)
+                {
+                    for (int step = 1; step <= Model.PageCount; step = step + Model.PageStep)
+                    {
+                        if (Model.PageIndex >= step && Model.PageIndex < step + Model.PageStep)
+                        {
+                            //首页
+                            if (Model.PageStep < Model.PageIndex)
+                            {
+                    <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/1/")" title="查看第一页">首页</a>
+                            }
+                            //上一页
+                            if (Model.PageIndex > 1)
+                            {
+                    <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + (Model.PageIndex - 1) + "/")" title="查看上一页">上一页</a>
+                            }
+                            //分页
+                            for (int i = step; i < step + Model.PageStep; i++)
+                            {
+                                if (i <= Model.PageCount)
+                                {
+                                    if (i == Model.PageIndex)
+                                    {
+                    <span class="btn btn-danger" title="当前第@(i)页">@i</span>
+                                    }
+                                    else
+                                    {
+                    <a href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + i + "/")" class="btn btn-default" title="查看第@(i)页">@i</a>
+                                    }
+                                }
+                            }
+                            //下一页
+                            if (Model.PageIndex < Model.PageCount)
+                            {
+                    <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + (Model.PageIndex + 1) + "/")" title="查看下一页">下一页</a>
+                            }
+                            //末页
+                            if (step + Model.PageStep <= Model.PageCount)
+                            {
+                    <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/" + Model.Category.Id + "/" + Model.PageCount + "/")" title="查看最后一页">末页</a>
+                            }
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="span3">
+            @Html.Action("HotKeywords", "News")
+            @Html.Action("NewsRight", "News")
+
+        </div>
+    </div>
+</div>
+<div class="jj"></div>

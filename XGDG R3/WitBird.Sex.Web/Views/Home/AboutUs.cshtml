@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "AboutUs";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+}
+<div class="title-a mt20">
+    <h2>免责声明</h2>
+</div>
+<p style="min-height: 350px; font-size:15px;">
+    @(WitBird.Sex.Web.Cache.WebConfig.WebName)站内资源来源于网络图片分享，图片版权归原作者所有。
+    <br />
+    如有侵权问题请告知，我们会立即处理。邮箱：122889741@qq.com
+</p>
+@Html.Action("FriendlyLink", "Home")
+

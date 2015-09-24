@@ -1,0 +1,19 @@
+﻿@model WitBird.Sex.Web.Models.HomeModel
+@{
+    ViewBag.Title = WitBird.Sex.Web.Cache.WebConfig.Title + "，" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = WitBird.Sex.Web.Cache.WebConfig.Keywords;
+    ViewBag.Description = WitBird.Sex.Web.Cache.WebConfig.Description;
+    ViewBag.MainTitle = WitBird.Sex.Web.Cache.WebConfig.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+}
+
+@Html.Action("IndexDeferLoad", "Home")
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("FriendlyLink", "Home")
+    </div>
+</div>

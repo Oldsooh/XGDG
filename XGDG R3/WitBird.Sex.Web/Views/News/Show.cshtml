@@ -1,0 +1,166 @@
+﻿@model WitBird.Sex.Web.Models.NewsModel
+@{
+    ViewBag.Title = Model.News.Title + "_" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    ViewBag.Keywords = Model.News.Keywords;
+    ViewBag.Description = Model.News.Description;
+    ViewBag.MainTitle = Model.News.Title + "，" + WitBird.Sex.Web.Cache.WebConfig.WebName;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@section head
+{
+}
+<!-- 面包屑 -->
+<ol class="breadcrumb hidden-xs">
+    <li><a href="@Uitlity.WebHelper.GetPCPath("/")" title="返回首页">首页</a></li>
+    @if (Model.News.Category.Id != "news")
+    {
+        <li><a href="@Uitlity.WebHelper.GetPCPath("/news/")" title="@Uitlity.WebHelper.GetCatogoryNameById("news")">@Uitlity.WebHelper.GetCatogoryNameById("news")</a></li>
+    }
+    <li class="active"><a href="@Uitlity.WebHelper.GetPCPath("/" + Model.News.CategoryId + "/")" title="@Uitlity.WebHelper.GetCatogoryNameById(Model.News.CategoryId)">@Uitlity.WebHelper.GetCatogoryNameById(Model.News.CategoryId)</a> </li>
+    <li>@Model.News.Title</li>
+</ol>
+
+<div id="content" class="row">
+    <div id="js-comments-selecter" class="col-md-9">
+        <article class="post">
+            <section class="sm-tit hidden-xs hidden-sm">
+                <h1>@Model.News.Title</h1>
+                <span>&nbsp;作者：@Model.News.Author</span>&nbsp;&nbsp;
+                <span>&nbsp;来源：@Model.News.PostType</span>&nbsp;&nbsp;
+                <i class="fa fa-clock-o"></i>&nbsp;@Model.News.InsertTime.ToString("yyyy-MM-dd hh:mm:ss")&nbsp;&nbsp;
+                <i class="fa fa-comment"></i>&nbsp;<a href="#ds-thread" title="查看评论"><span class="ds-thread-count" data-thread-key="/news/@Model.News.Id" data-count-type="comments"></span></a>&nbsp;&nbsp;
+                <i class="fa fa-eye"></i>&nbsp;@Model.News.ViewCount 次浏览&nbsp;&nbsp;
+                <i id="bdshare" class="bdshare_b" style="float: none;">
+                    <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=@(DateTime.Now)" style="float:none;" />
+                </i>
+            </section>
+            <section class="sm-tit hidden-md hidden-lg">
+                <h1>@Model.News.Title</h1>
+                <i id="bdshare" class="bdshare_b" style="float: none;">
+                    <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=@(DateTime.Now)" style="float:none;" />
+                </i>
+            </section>
+            <section class="showsummary">
+                [摘要] @Model.News.Description
+            </section>
+
+            <section class="pd20 carousel-inner">
+                @{
+                    <p>
+                        @(new HtmlString(Model.News.ContentStyle))
+                    </p>
+                    <br>
+                }
+            </section>
+            <section>
+                @if (Model.LastNews != null)
+                {
+                    <ul class="bs-docs-footer-links text-muted">
+                        <li>上一篇</li>
+                        <li>·</li>
+                        <li><a href="@Uitlity.WebHelper.GetPCPath("/news/" + (Model.LastNews.Id) + ".html")" title="@Model.LastNews.Title">@Model.LastNews.Title</a></li>
+                    </ul>
+                }
+                @if (Model.NextNews != null)
+                {
+                    <ul class="bs-docs-footer-links text-muted">
+                        <li>下一篇</li>
+                        <li>·</li>
+                        <li><a href="@Uitlity.WebHelper.GetPCPath("/news/" + (Model.NextNews.Id) + ".html")" title="@Model.NextNews.Title">@Model.NextNews.Title</a></li>
+                    </ul>
+                }
+                <br />
+            </section>
+        </article>
+    </div>
+
+    <div class="col-md-3">
+        <aside>
+            @Html.Action("HotKeywords", "News")
+            @Html.Action("NewsRight", "News")
+            @if (Model.RelatedNews != null && Model.RelatedNews.Count > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-file"></i>&nbsp; 相关资讯</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.RelatedNews)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                            <div class="media md-jj">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p class="hidden">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.RelatedAlbum != null && Model.RelatedAlbum.Count > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-camera"></i>&nbsp; 相关图集</h3>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.RelatedAlbum)
+                        {
+                            string url = Uitlity.WebHelper.GetPCPath("/" + item.CategoryId + "/" + item.Id + ".html");
+                            <div class="media md-jj">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@url" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <p class="hidden">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </aside>
+    </div>
+</div>
+@section foot
+{
+    <style>
+        .carousel-inner img {
+            max-width: 90%;
+            height: auto;
+            padding: 10px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .text {
+            font-size: 14px;
+            line-height: 25px;
+        }
+    </style>
+    <script type="text/javascript" id="bdshare_js" data="type=button&uid=0"></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+    </script>
+    <script>var duoshuoQuery = { short_name: "xgdg" };</script>
+    <script src="http://static.duoshuo.com/embed.js"></script>
+    <script>
+        var el = document.createElement('div');
+        el.setAttribute('data-thread-key', '/news/@Model.News.Id');
+        el.setAttribute('data-url', 'http://www.xgdg.cn/news/@(Model.News.Id).html');
+        DUOSHUO.EmbedThread(el);
+        document.getElementById('js-comments-selecter').appendChild(el)
+    </script>
+    <script>
+    </script>
+
+}
