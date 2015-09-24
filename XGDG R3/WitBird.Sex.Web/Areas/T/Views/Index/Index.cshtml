@@ -31,7 +31,7 @@ var url = "/" + item.CategoryId + "/" + item.Id + ".html";
                     <td><a href="@url" title="@item.Title">@item.Title</a></td>
                     <td>
                         <a href="/t/index/edit/@item.Id">编辑</a>
-                        <a href="/t/index/delete/@item.Id" onclick="if(confirm('亲，你确认要删除 (@item.Title) 吗？')==false)return false;">删除</a>
+                        <a href="/t/index/delete/@item.Id" onclick="if(confirm('你确认要删除 (@item.Title) 吗？')==false)return false;">删除</a>
                     </td>
                 </tr>
                 }

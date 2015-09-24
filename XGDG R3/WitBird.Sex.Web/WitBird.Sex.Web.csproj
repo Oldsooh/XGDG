@@ -682,8 +682,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Image\Edit.cshtml" />
-    <Content Include="Areas\T\Views\Index\1Index.cshtml" />
-    <Content Include="Areas\T\Views\Index\1Edit.cshtml" />
     <Content Include="Areas\T\Views\Web.config" />
     <Content Include="Areas\T\Views\Index\Index.cshtml" />
     <Content Include="Areas\T\Views\Index\Edit.cshtml" />
